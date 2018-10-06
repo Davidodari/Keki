@@ -1,6 +1,6 @@
 package ke.co.keki.com.keki.model;
 
-public class Steps {
+public class Steps implements ISteps {
 
     private int id;
     private String shortDescription;
@@ -20,42 +20,52 @@ public class Steps {
         this.thumbnailUrl = thumbnailUrl;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
 
+    @Override
     public String getShortDescription() {
         return shortDescription;
     }
 
+    @Override
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public String getVideoUrl() {
         return videoUrl;
     }
 
+    @Override
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
     }
 
+    @Override
     public String getThumbnailUrl() {
         return thumbnailUrl;
     }
 
+    @Override
     public void setThumbnailUrl(String thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
     }
