@@ -57,28 +57,34 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         TextView mPastryTitleTextView;
         @BindView(R.id.tv_no_of_servings)
         TextView mPastryServingValueTextView;
+        @BindView(R.id.tv_servings_title)
+        TextView mServingTitle;
+
 
         public PastryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
         }
 
         //Recycler View View interface implementation
         @Override
         public void setPastryName(String pastryName) {
+
             mPastryTitleTextView.setText(pastryName);
         }
 
         @Override
         public void setPastryImage(String pastryImageLink) {
+
             Picasso.get()
                     .load(pastryImageLink)
+                    .placeholder(R.drawable.donut)
                     .into(mPastryImageView);
         }
 
         @Override
         public void setPastryServing(int pastryServing) {
+
             String serveValue = String.format("%d", pastryServing);
             mPastryServingValueTextView.setText(serveValue);
         }
