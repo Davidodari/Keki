@@ -5,4 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_pastries"
+        android:layout_margin="8dp"
+        tools:listitem ="@layout/main_view_list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" />
+
 </android.support.constraint.ConstraintLayout>

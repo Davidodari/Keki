@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/root_card_view_height"
+    android:layout_margin="@dimen/root_card_view_margin"
+    android:clickable="true"
+    android:elevation="@dimen/root_card_view_elevation"
+    android:focusable="true"
+    android:translationZ="@dimen/root_card_view_translationz">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_pastry_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pastry_image_height"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/mainview_image_content_description"
+            android:scaleType="centerInside"
+            tools:src="?attr/colorAccent" />
+
+        <TextView
+            android:id="@+id/tv_pastry_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/pastry_title_margin"
+            android:layout_marginTop="@dimen/pastry_title_margin"
+            android:fontFamily="monospace"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorPrimaryLight"
+            tools:text="Sicko Pie" />
+
+        <TextView
+            android:id="@+id/tv_servings_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/pastry_serving_title_margin"
+            android:fontFamily="serif-monospace"
+            android:text="@string/label_servings"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+
+        <View
+            android:layout_width="@dimen/view_width"
+            android:layout_height="@dimen/view_height"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryLight" />
+
+        <TextView
+            android:id="@+id/tv_no_of_servings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/serving_margin_top"
+            android:layout_marginBottom="@dimen/serving_margin_bottom"
+            android:textAlignment="center"
+            tools:text="0" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Keki</string>
+    <string name="app_name" translatable="false">Keki</string>
+    <string name="label_servings">Serving</string>
+    <string name="mainview_image_content_description">Pastry Image</string>
 </resources>
