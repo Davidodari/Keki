@@ -10,7 +10,7 @@
         android:layout_margin="8dp"
         tools:listitem ="@layout/main_view_list_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="none" />
 
 </android.support.constraint.ConstraintLayout>

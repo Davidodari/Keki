@@ -7,7 +7,7 @@
     android:clickable="true"
     android:elevation="@dimen/root_card_view_elevation"
     android:focusable="true"
-    android:translationZ="@dimen/root_card_view_translationz">
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="@dimen/pastry_title_margin"
             android:layout_marginTop="@dimen/pastry_title_margin"
             android:fontFamily="monospace"
             android:textAlignment="center"
