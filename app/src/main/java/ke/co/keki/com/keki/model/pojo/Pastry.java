@@ -25,6 +25,13 @@ public class Pastry implements IPastry {
         this.image = image;
     }
 
+    public Pastry(int id, String name, int Servings, String image) {
+        this.id = id;
+        this.name = name;
+        this.Servings = Servings;
+        this.image = image;
+    }
+
     @Override
     public int getId() {
         return id;
