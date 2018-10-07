@@ -4,7 +4,7 @@
     <!--Card View-->
     <dimen name="root_card_view_height">160dp</dimen>
     <dimen name="root_card_view_margin">8dp</dimen>
-    <dimen name="root_card_view_elevation">6dp</dimen>
+    <dimen name="root_card_view_elevation">8dp</dimen>
     <dimen name="root_card_view_translationz">8dp</dimen>
 
     <!--Image View-->
