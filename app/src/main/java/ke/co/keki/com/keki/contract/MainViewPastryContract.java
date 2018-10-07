@@ -1,7 +1,5 @@
 package ke.co.keki.com.keki.contract;
 
-import android.net.Uri;
-
 import java.util.List;
 
 import ke.co.keki.com.keki.model.pojo.Pastry;
@@ -11,7 +9,6 @@ public interface MainViewPastryContract {
 
         List<Pastry> getPastryData();
 
-        void setPastryData();
     }
 
     interface View {
@@ -35,7 +32,10 @@ public interface MainViewPastryContract {
     }
 
     interface Presenter {
-        void onViewInit(List<Pastry> mListPastry);
+
+        void onBindPastryViewAtPosition(int position, MainViewPastryContract.View.RecyclerViewData recyclerViewSetup);
+
+        int getPastryItemCount();
 
         void onCardSelected(Pastry pastry);
 
