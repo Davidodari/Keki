@@ -1,4 +1,4 @@
-package ke.co.keki.com.keki.model;
+package ke.co.keki.com.keki.model.pojo;
 
 public interface IIngredients {
     int getQuantity();

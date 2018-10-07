@@ -1,4 +1,6 @@
-package ke.co.keki.com.keki.model;
+package ke.co.keki.com.keki.model.pojo;
+
+import ke.co.keki.com.keki.model.pojo.ISteps;
 
 public class Steps implements ISteps {
 
