@@ -15,30 +15,35 @@ public interface MainViewPastryContract {
 
         void displayError();
 
+        void displayOnLoadError();
+
         void displayAnimations();
 
-        void diplayLoadAnimations();
+        void displayLoadAnimations();
 
-        //Recycler View View Interface
+        void displayJson(String string);
+
         interface RecyclerViewData {
+            //Recycler View View Interface
             void setPastryName(String pastryName);
 
             void setPastryImage(String pastryImageLink);
 
             void setPastryServing(int pastryServing);
         }
-
-        void openIntent();
     }
 
     interface Presenter {
+        //called on onCreate of view
+        void onStart();
 
+        //binds each view in recycler view adapter
         void onBindPastryViewAtPosition(int position, MainViewPastryContract.View.RecyclerViewData recyclerViewSetup);
 
+        //gets total no of items in pastry list
         int getPastryItemCount();
 
-        void onCardSelected(Pastry pastry);
-
+        //called on onDestroy of view
         void onDestroy();
     }
 }

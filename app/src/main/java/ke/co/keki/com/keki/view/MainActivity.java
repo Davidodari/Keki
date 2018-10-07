@@ -1,10 +1,11 @@
 package ke.co.keki.com.keki.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
     MainViewPastryPresenter pastryPresenter;
     @BindView(R.id.rv_pastries)
     RecyclerView mRecyclerView;
+    @BindView(R.id.tv_mock_test)
+    TextView mJsonTextView;
     PastryAdapter mPastryAdapter;
 
     @Override
@@ -24,7 +27,10 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Toolbar toolbar = findViewById(R.id.tb_support_toolbar);
+        setSupportActionBar(toolbar);
         pastryPresenter = new MainViewPastryPresenter(this, new MainViewPastryModel());
+        pastryPresenter.onStart();
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -39,19 +45,28 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
     }
 
     @Override
+    public void displayOnLoadError() {
+
+    }
+
+    @Override
     public void displayAnimations() {
 
     }
 
     @Override
-    public void diplayLoadAnimations() {
+    public void displayLoadAnimations() {
 
     }
 
     @Override
-    public void openIntent() {
-        Intent openRecipeDetails = new Intent(MainActivity.this, DetailActivity.class);
-        startActivity(openRecipeDetails);
+    public void displayJson(String string) {
+        mJsonTextView.setText(string);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        pastryPresenter.onDestroy();
+    }
 }
