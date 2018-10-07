@@ -12,18 +12,17 @@ import java.util.Scanner;
 
 public class NetworkUtils {
 
-    private static final String JSON_PATH_URL = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
 
-    public static URL builtUrl() {
-        Uri builtJsonUri = Uri.parse(JSON_PATH_URL);
-        URL url = null;
+    public static URL builtUrl(String url) {
+        Uri builtJsonUri = Uri.parse(url);
+        URL Url = null;
         try {
-            url = new URL(builtJsonUri.toString());
+            Url = new URL(builtJsonUri.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
-        return (URLUtil.isValidUrl(url.toString())) ? url : null;
+        return (URLUtil.isValidUrl(url)) ? Url : null;
     }
 
     public static String getResponseFromHttpUrl(URL url) throws IOException {
