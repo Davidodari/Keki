@@ -2,21 +2,30 @@
 <resources>
     <!--Recycler view item dimensions-->
     <!--Card View-->
-    <dimen name="root_card_view_height">160dp</dimen>
+    <dimen name="root_card_view_height">200dp</dimen>
     <dimen name="root_card_view_margin">8dp</dimen>
     <dimen name="root_card_view_elevation">8dp</dimen>
     <dimen name="root_card_view_translationz">8dp</dimen>
+    <dimen name="root_card_view_corner_radius">8dp</dimen>
 
     <!--Image View-->
-    <dimen name="pastry_image_height">80dp</dimen>
+    <dimen name="pastry_image_height">200dp</dimen>
     <!--Text View Pastry Title-->
-    <dimen name="pastry_title_margin">4dp</dimen>
+    <dimen name="pastry_title_margin">8dp</dimen>
+    <dimen name="pastry_title_margin_bottom">40dp</dimen>
     <!--Text View Serving Title-->
-    <dimen name="pastry_serving_title_margin">2dp</dimen>
-    <!--View-->
+    <dimen name="pastry_serving_title_margin_start">8dp</dimen>
+    <dimen name="pastry_serving_title_margin_bottom">8dp</dimen>
+    <!--View horizontal line below pastry title-->
     <dimen name="view_height">2dp</dimen>
     <dimen name="view_width">32dp</dimen>
+    <dimen name="view_margins">32dp</dimen>
     <!--Text View Serving Value-->
-    <dimen name="serving_margin_top">4dp</dimen>
+    <dimen name="serving_margin_top">8dp</dimen>
     <dimen name="serving_margin_bottom">4dp</dimen>
+
+    <!--View image scrim height/black overlay over image view-->
+    <dimen name="view_height_scrim">200dp</dimen>
+
+
 </resources>
