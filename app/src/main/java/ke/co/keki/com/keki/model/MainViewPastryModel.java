@@ -1,29 +1,42 @@
 package ke.co.keki.com.keki.model;
 
 
-import java.util.ArrayList;
+import android.util.Log;
+
 import java.util.List;
 
 import ke.co.keki.com.keki.contract.MainViewPastryContract;
 import ke.co.keki.com.keki.model.pojo.Pastry;
+import ke.co.keki.com.keki.utils.JsonUtils;
 
 
 public class MainViewPastryModel implements MainViewPastryContract.Model {
     private static final String TAG = MainViewPastryModel.class.getSimpleName();
     List<Pastry> mPastriesList;
+    List<Pastry> testList;
+
+
+    @Override
+    public void setPastryData(String jsonResponse) {
+        mPastriesList = JsonUtils.parseJSON(jsonResponse);
+        Log.d(TAG, "" + mPastriesList.size());
+        storeModelData(mPastriesList);
+    }
+
 
     @Override
     public List<Pastry> getPastryData() {
-        //Mock Data
-        final Pastry pastryOne = new Pastry(1, "Cake", 6, null);
-        final Pastry pastryTwo = new Pastry(2, "Pie", 8, null);
-        final Pastry pastryThree = new Pastry(3, "Donought", 3, null);
-        mPastriesList = new ArrayList<Pastry>() {{
-            add(pastryOne);
-            add(pastryThree);
-            add(pastryTwo);
-
-        }};
-        return mPastriesList;
+        //1.TODO Retrieve Data From Database as list and display
+        return testList;
     }
+
+    public void storeModelData(List<Pastry> mPastriesList) {
+        for (int i = 0; i < mPastriesList.size(); i++) {
+            String name = mPastriesList.get(i).getName();
+            String imageLink = mPastriesList.get(i).getImage();
+            int serving = mPastriesList.get(i).getServings();
+        }
+    }
+
+
 }
