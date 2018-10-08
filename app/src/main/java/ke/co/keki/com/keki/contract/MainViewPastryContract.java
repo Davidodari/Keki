@@ -7,8 +7,10 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 public interface MainViewPastryContract {
     interface Model {
 
-        List<Pastry> getPastryData();
 
+        void setPastryData(String jsonObject);
+
+        List<Pastry> getPastryData();
     }
 
     interface View {
@@ -45,5 +47,7 @@ public interface MainViewPastryContract {
 
         //called on onDestroy of view
         void onDestroy();
+
+        void setPastryData(String  response);
     }
 }
