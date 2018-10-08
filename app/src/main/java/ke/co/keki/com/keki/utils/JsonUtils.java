@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ke.co.keki.com.keki.model.pojo.Ingredients;
@@ -30,66 +31,74 @@ public class JsonUtils {
 
     //Steps JSON Array
     private final static String STEPS_ID = "id";
-    private final static String STEPS_SHORT_DESCRIPTION = "shortdescription";
+    private final static String STEPS_SHORT_DESCRIPTION = "shortDescription";
     private final static String STEPS_DESCRIPTION = "description";
     private final static String STEPS_VIDEO_URL = "videoURL";
     private final static String STEPS_THUMBNAIL_URL = "thumbnailURL";
 
     private static Pastry pastryObject;
-    private static Ingredients ingredient;
-    private static List<Ingredients> ingredientsList;
-    private static Steps step;
-    private static List<Steps> stepsList;
-    private static List<Pastry> pastriesList;
-    private static Pastry pastry;
+    static List<Ingredients> ingredientsList;
+    static List<Steps> stepsList;
+    static List<Pastry> pastriesList;
 
 
-    public static List<Pastry> parseJSON(String jsonObject) {
+    public static List<Pastry> parseJSON(String jsonResponse) {
+        ingredientsList = new ArrayList<>();
+        stepsList = new ArrayList<>();
+        pastriesList = new ArrayList<>();
+
         try {
+            JSONArray jsonArrayResponse = new JSONArray(jsonResponse);
+            //no of elements = 4
 
-            JSONObject pastryJson = new JSONObject(jsonObject);
-            //Pastry Id
-            int pastryId = pastryJson.getInt(PASTRY_ID);
-            String pastryName = pastryJson.getString(PASTRY_NAME);
-            int pastryServings = pastryJson.getInt(PASTRY_SERVINGS);
-            String pastryImage = pastryJson.getString(PASTRY_IMAGE);
+            for (int i = 0; i < jsonArrayResponse.length(); i++) {
+                //get each object piece by piece
+                JSONObject pastriesObject = jsonArrayResponse.getJSONObject(i);
+                //object properties
+                int pastryId = pastriesObject.getInt(PASTRY_ID);
+                String pastryName = pastriesObject.getString(PASTRY_NAME);
+                int pastryServings = pastriesObject.getInt(PASTRY_SERVINGS);
+                String pastryImage = pastriesObject.getString(PASTRY_IMAGE);
 
-            //JSON ARRAYS
-            JSONArray ingredients = pastryJson.getJSONArray(PASTRY_INGREDIENTS);
-            JSONArray steps = pastryJson.getJSONArray(PASTRY_STEPS);
+                //JSON ARRAYS
+                JSONArray ingredients = pastriesObject.getJSONArray(PASTRY_INGREDIENTS);
+                for (int ingredientItem = 0; ingredientItem < ingredients.length(); ingredientItem++) {
+                    //get each ingredient one by one;
+                    JSONObject ingredObject = ingredients.getJSONObject(ingredientItem);
 
-            for (int i = 0; i < ingredients.length(); i++) {
-                JSONObject ingredObject = ingredients.getJSONObject(i);
-                int quantity;
-                String measure, item;
-                quantity = ingredObject.getInt(INGREDIENT_QUANTITY);
-                measure = ingredObject.getString(INGREDIENT_MEASURE);
-                item = ingredObject.getString(INGREDIENT_ITEM);
-                ingredient = new Ingredients(quantity, measure, item);
-                ingredientsList.add(ingredient);
+                    int quantity;
+                    String measure, item;
+                    //ingredient item
+                    quantity = ingredObject.getInt(INGREDIENT_QUANTITY);
+                    measure = ingredObject.getString(INGREDIENT_MEASURE);
+                    item = ingredObject.getString(INGREDIENT_ITEM);
+                    //Add ingredient to list
+                    ingredientsList.add(new Ingredients(quantity, measure, item));
+
+                }
+                JSONArray steps = pastriesObject.getJSONArray(PASTRY_STEPS);
+                for (int stepsToFollow = 0; stepsToFollow < steps.length(); stepsToFollow++) {
+                    JSONObject stepsObject = steps.getJSONObject(stepsToFollow);
+                    int id;
+                    String shortDescription, description, videoUrl, thumbnailUrl;
+
+                    id = stepsObject.getInt(STEPS_ID);
+                    shortDescription = stepsObject.getString(STEPS_SHORT_DESCRIPTION);
+                    description = stepsObject.getString(STEPS_DESCRIPTION);
+                    videoUrl = stepsObject.getString(STEPS_VIDEO_URL);
+                    thumbnailUrl = stepsObject.getString(STEPS_THUMBNAIL_URL);
+                    stepsList.add(new Steps(id, shortDescription, description, videoUrl, thumbnailUrl));
+                }
+                pastryObject = new Pastry(pastryId, pastryName, ingredientsList, stepsList, pastryServings, pastryImage);
+                Log.d(TAG, "pastryName" + pastryObject.getName());
+                pastriesList.add(pastryObject);
             }
-            for (int i = 0; i < steps.length(); i++) {
-                JSONObject stepsObject = ingredients.getJSONObject(i);
-                int id;
-                String shortDescription, description, videoUrl, thumbnailUrl;
-                id = stepsObject.getInt(STEPS_ID);
-                shortDescription = stepsObject.getString(STEPS_SHORT_DESCRIPTION);
-                description = stepsObject.getString(STEPS_DESCRIPTION);
-                videoUrl = stepsObject.getString(STEPS_VIDEO_URL);
-                thumbnailUrl = stepsObject.getString(STEPS_THUMBNAIL_URL);
-                step = new Steps(id, shortDescription, description, videoUrl, thumbnailUrl);
-                stepsList.add(step);
-            }
-
-            pastryObject = new Pastry(pastryId, pastryName, ingredientsList, stepsList, pastryServings, pastryImage);
-            pastriesList.add(pastryObject);
-            Log.d(TAG, "pastryObject" + pastryObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
             Log.d(TAG, "jsonError");
         }
-
+        Log.d(TAG, "pastryListSize:" + pastriesList.size());
         return pastriesList;
     }
 }
