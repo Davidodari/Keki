@@ -3,27 +3,29 @@ package ke.co.keki.com.keki.view;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ke.co.keki.com.keki.R;
-import ke.co.keki.com.keki.contract.MainViewPastryContract;
-import ke.co.keki.com.keki.presenter.MainViewPastryPresenter;
+import ke.co.keki.com.keki.model.pojo.Pastry;
 
 public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdapterViewHolder> {
 
-    private final MainViewPastryPresenter presenter;
+    private static String TAG = PastryAdapter.class.getSimpleName();
+    private List<Pastry> mainViewPastryList;
 
     //Adapter takes in presenter to handle data operations
-    public PastryAdapter(MainViewPastryPresenter mainViewPastryPresenter) {
-        this.presenter = mainViewPastryPresenter;
+    public PastryAdapter(List<Pastry> mainViewPastryList) {
+        this.mainViewPastryList = mainViewPastryList;
     }
 
     @NonNull
@@ -39,16 +41,17 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
 
     @Override
     public void onBindViewHolder(@NonNull PastryAdapterViewHolder pastryAdapterViewHolder, int i) {
-        presenter.onBindPastryViewAtPosition(i, pastryAdapterViewHolder);
+        pastryAdapterViewHolder.bind(mainViewPastryList.get(i));
+        Log.d(TAG, mainViewPastryList.get(0).getName());
     }
 
     @Override
     public int getItemCount() {
-        return presenter.getPastryItemCount();
+        return (mainViewPastryList == null) ? 0 : mainViewPastryList.size();
     }
 
 
-    class PastryAdapterViewHolder extends RecyclerView.ViewHolder implements MainViewPastryContract.View.RecyclerViewData {
+    class PastryAdapterViewHolder extends RecyclerView.ViewHolder {
 
         //Bind Views
         @BindView(R.id.iv_pastry_image)
@@ -66,27 +69,12 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
             ButterKnife.bind(this, itemView);
         }
 
-        //Recycler View View interface implementation
-        @Override
-        public void setPastryName(String pastryName) {
-
-            mPastryTitleTextView.setText(pastryName);
-        }
-
-        @Override
-        public void setPastryImage(String pastryImageLink) {
-
-            Picasso.get()
-                    .load(pastryImageLink)
-                    .placeholder(R.drawable.donut)
-                    .into(mPastryImageView);
-        }
-
-        @Override
-        public void setPastryServing(int pastryServing) {
-
-            String serveValue = String.format("%d", pastryServing);
+        public void bind(Pastry pastry) {
+            mPastryTitleTextView.setText(pastry.getName());
+            mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.donut));
+            String serveValue = String.format(Locale.getDefault(), "%d", pastry.getServings());
             mPastryServingValueTextView.setText(serveValue);
         }
+
     }
 }
