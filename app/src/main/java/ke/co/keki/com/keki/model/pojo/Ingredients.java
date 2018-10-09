@@ -1,14 +1,18 @@
 package ke.co.keki.com.keki.model.pojo;
 
+import org.parceler.Parcel;
+
+@Parcel(Parcel.Serialization.BEAN)
 public class Ingredients implements IIngredients {
 
     //Ingredients Item json objects
     private int quantity;
+
     private String measure;
+
     private String ingredientItem;
 
     public Ingredients() {
-
     }
 
     public Ingredients(int quantity, String measure, String ingredientItem) {

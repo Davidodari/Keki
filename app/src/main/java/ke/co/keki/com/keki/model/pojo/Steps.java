@@ -1,17 +1,22 @@
 package ke.co.keki.com.keki.model.pojo;
 
-import ke.co.keki.com.keki.model.pojo.ISteps;
 
+import org.parceler.Parcel;
+
+@Parcel(Parcel.Serialization.BEAN)
 public class Steps implements ISteps {
 
     private int id;
+
     private String shortDescription;
+
     private String description;
+
     private String videoUrl;
+
     private String thumbnailUrl;
 
     public Steps() {
-
     }
 
     public Steps(int id, String shortDescription, String description, String videoUrl, String thumbnailUrl) {
