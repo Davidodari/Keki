@@ -1,6 +1,7 @@
 package ke.co.keki.com.keki.view;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
     ProgressBar progressBar;
     PastryAdapter mPastryAdapter;
     RecyclerView.LayoutManager layoutManager;
+    List<Pastry> pastries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
         Toolbar toolbar = findViewById(R.id.tb_support_toolbar);
         setSupportActionBar(toolbar);
         mRecyclerView.setHasFixedSize(true);
+        pastryPresenter = new MainViewPastryPresenter(this);
+        pastryPresenter.onStart();
         layoutManager = new LinearLayoutManager(this);
         //2.TODO Create Tab Layout and convert to grid layout
         //3.TODO Add Animations
@@ -44,10 +47,8 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        pastryPresenter = new MainViewPastryPresenter(this);
-        pastryPresenter.onStart();
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 
     @Override
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
     public void onDataLoaded(List<Pastry> pastries) {
         Log.d(TAG, "" + pastries.size());
         progressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
         mRecyclerView.setLayoutManager(layoutManager);
         mPastryAdapter = new PastryAdapter(pastries);
         mRecyclerView.setAdapter(mPastryAdapter);
@@ -69,5 +71,11 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
     @Override
     public void progressBarShow() {
         progressBar.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onError() {
+
     }
 }
