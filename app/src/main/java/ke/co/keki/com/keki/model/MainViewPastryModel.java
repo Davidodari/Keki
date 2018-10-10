@@ -21,6 +21,11 @@ public class MainViewPastryModel implements MainViewPastryContract.Model {
     LoadPastriesTask loadPastriesTask;
     public static List<Pastry> pastryList;
 
+
+    /**
+     * @param presenter presenter to which changes will be updated and notified
+     *                  Starts network call
+     */
     @Override
     public void startNetworkCall(MainViewPastryContract.Presenter presenter) {
         if (loadPastriesTask == null || loadPastriesTask.getStatus() != AsyncTask.Status.RUNNING) {
@@ -30,6 +35,9 @@ public class MainViewPastryModel implements MainViewPastryContract.Model {
         }
     }
 
+    /**
+     * ends network call when user destroys app activivty
+     */
     @Override
     public void endNetworkCall() {
         //halts async task process on destroyed
@@ -51,7 +59,7 @@ public class MainViewPastryModel implements MainViewPastryContract.Model {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            presenter.stateLoading();
+            presenter.asyncLoadingInBackground();
         }
 
         @Override

@@ -1,5 +1,7 @@
 package ke.co.keki.com.keki.contract;
 
+import android.content.Context;
+
 import java.util.List;
 
 import ke.co.keki.com.keki.model.pojo.Pastry;
@@ -23,15 +25,14 @@ public interface MainViewPastryContract {
     }
 
     interface Presenter {
+        boolean checkNetworkConnection(Context context);
 
-        void stateLoading();
+        void asyncLoadingInBackground();
 
         void getPastryList(List<Pastry> pastries);
 
-        //called on onCreate of view
         void onStart();
 
-        //called on onDestroy of view
         void onDestroy();
 
         void onError();

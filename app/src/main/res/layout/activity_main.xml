@@ -17,12 +17,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/iv_offline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/label_offline_content_description"
+        android:src="@drawable/ic_offline"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/tv_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/tv_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/playfair"
-        android:text="@string/label_error"
+        android:text="@string/label_network_error"
         android:textAlignment="center"
         android:textSize="15sp"
         android:visibility="gone"

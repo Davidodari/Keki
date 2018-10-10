@@ -13,6 +13,12 @@ import ke.co.keki.com.keki.model.pojo.Ingredients;
 import ke.co.keki.com.keki.model.pojo.Pastry;
 import ke.co.keki.com.keki.model.pojo.Steps;
 
+
+/**
+ * Class parsing JSON
+ *
+ * @author David Odari
+ */
 public class JsonUtils {
 
     private static final String TAG = JsonUtils.class.getSimpleName();
@@ -42,6 +48,12 @@ public class JsonUtils {
     static List<Pastry> pastriesList;
 
 
+    /**
+     * Parsing of jsonobjects to Java Objects
+     *
+     * @param jsonResponse raw json response as a string which will be parsed
+     * @return list of pastries parsed from the JSON RESPONSE
+     */
     public static List<Pastry> parseJSON(String jsonResponse) {
         ingredientsList = new ArrayList<>();
         stepsList = new ArrayList<>();

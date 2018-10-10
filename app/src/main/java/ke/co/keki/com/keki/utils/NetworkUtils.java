@@ -11,7 +11,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ * Class Making Network Calls and handling HTTP Response
+ *
+ * @author David Odari
+ */
 public class NetworkUtils {
+
 
     private static String TAG = NetworkUtils.class.getSimpleName();
 

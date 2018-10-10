@@ -2,5 +2,6 @@
     <string name="app_name" translatable="false">Keki</string>
     <string name="label_servings">Serves</string>
     <string name="mainview_image_content_description">Pastry Image</string>
-    <string name="label_error">No Data Loaded</string>
+    <string name="label_network_error">Check Your Internet Connection</string>
+    <string name="label_offline_content_description">Offline</string>
 </resources>
