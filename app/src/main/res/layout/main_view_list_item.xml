@@ -4,10 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/root_card_view_height"
-    android:layout_margin="@dimen/root_card_view_margin"
+    android:layout_marginStart="@dimen/root_card_view_margin_sides_hor"
+    android:layout_marginEnd="@dimen/root_card_view_margin_sides_hor"
+    android:layout_marginTop="@dimen/root_card_view_margin_sides_ver"
+    android:layout_marginBottom="@dimen/root_card_view_margin_sides_ver"
     android:clickable="true"
     android:elevation="@dimen/root_card_view_elevation"
     android:focusable="true"
+    android:padding="@dimen/root_card_view_padding"
     app:cardCornerRadius="@dimen/root_card_view_corner_radius">
 
     <FrameLayout
@@ -46,7 +50,7 @@
             android:layout_gravity="bottom|start"
             android:layout_marginStart="@dimen/serving_margin_top"
             android:layout_marginBottom="@dimen/view_margins"
-            android:background="@color/colorWhite" />
+            android:background="@color/colorPrimaryLight" />
 
         <LinearLayout
             android:layout_width="wrap_content"
