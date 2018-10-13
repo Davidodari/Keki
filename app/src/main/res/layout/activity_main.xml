@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_support_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorWhite"
+        android:elevation="4dp"
+        android:padding="8dp"
+        android:theme="@style/ToolbarTheme" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_pastries"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutAnimation="@anim/layout_animation_main"
+        android:scrollbars="none"
+        tools:listitem="@layout/main_view_list_item" />
 
     <ProgressBar
         android:id="@+id/pb_load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_offline"
@@ -23,10 +39,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/label_offline_content_description"
         android:src="@drawable/ic_offline"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/tv_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_error"
@@ -36,40 +49,6 @@
         android:text="@string/label_network_error"
         android:textAlignment="center"
         android:textSize="15sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".view.MainActivity">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/tb_support_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
-                android:theme="@style/ToolbarTheme" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_pastries"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layoutAnimation="@anim/layout_animation_main"
-                android:scrollbars="none"
-                tools:listitem="@layout/main_view_list_item" />
-
-        </LinearLayout>
-    </ScrollView>
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
