@@ -1,24 +1,25 @@
 package ke.co.keki.com.keki.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import java.util.List;
 
-import ke.co.keki.com.keki.contract.MainViewPastryContract;
-import ke.co.keki.com.keki.model.MainViewPastryModel;
+import ke.co.keki.com.keki.contract.PastryContract;
+import ke.co.keki.com.keki.model.PastryModel;
 import ke.co.keki.com.keki.model.pojo.Pastry;
 
-public class MainViewPastryPresenter implements MainViewPastryContract.Presenter {
+public class PastryPresenter implements PastryContract.Presenter {
 
-    private MainViewPastryContract.View view;
-    private MainViewPastryContract.Model model;
+    private PastryContract.View view;
+    private PastryContract.Model model;
 
 
-    public MainViewPastryPresenter(MainViewPastryContract.View view) {
+    public PastryPresenter(PastryContract.View view) {
         this.view = view;
-        this.model = new MainViewPastryModel();
+        this.model = new PastryModel();
     }
 
     /**
@@ -46,6 +47,7 @@ public class MainViewPastryPresenter implements MainViewPastryContract.Presenter
      */
     @Override
     public boolean checkNetworkConnection(Context context) {
+
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -54,6 +56,11 @@ public class MainViewPastryPresenter implements MainViewPastryContract.Presenter
             return false;
         }
 
+    }
+
+    @Override
+    public boolean checkPermissions(Activity activity) {
+        return model.requestNetworkPermission(activity);
     }
 
     /**
