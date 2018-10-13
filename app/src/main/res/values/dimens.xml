@@ -3,10 +3,12 @@
     <!--Recycler view item dimensions-->
     <!--Card View-->
     <dimen name="root_card_view_height">200dp</dimen>
-    <dimen name="root_card_view_margin">8dp</dimen>
+    <dimen name="root_card_view_margin_sides_hor">16dp</dimen>
+    <dimen name="root_card_view_margin_sides_ver">8dp</dimen>
     <dimen name="root_card_view_elevation">8dp</dimen>
     <dimen name="root_card_view_translationz">8dp</dimen>
     <dimen name="root_card_view_corner_radius">8dp</dimen>
+    <dimen name="root_card_view_padding">8dp</dimen>
 
     <!--Image View-->
     <dimen name="pastry_image_height">200dp</dimen>
