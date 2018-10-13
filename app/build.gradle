@@ -27,6 +27,7 @@ dependencies {
     ext.parcelerVersion = '1.1.11'
     ext.architectureLibraryVersion = '1.1.1'
     ext.gsonVersion='2.8.5'
+    ext.dexterRuntimePermissionsVersion='5.0.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
@@ -36,6 +37,7 @@ dependencies {
     implementation "com.squareup.picasso:picasso:${picassoVersion}"
     implementation "com.jakewharton:butterknife:${butterKnifeVersion}"
     implementation "org.parceler:parceler-api:${parcelerVersion}"
+    implementation "com.karumi:dexter:${dexterRuntimePermissionsVersion}"
     implementation "android.arch.persistence.room:runtime:${architectureLibraryVersion}"
     implementation "android.arch.lifecycle:extensions:${architectureLibraryVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
