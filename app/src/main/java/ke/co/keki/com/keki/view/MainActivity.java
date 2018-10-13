@@ -1,5 +1,6 @@
 package ke.co.keki.com.keki.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -20,13 +23,14 @@ import ke.co.keki.com.keki.R;
 import ke.co.keki.com.keki.contract.MainViewPastryContract;
 import ke.co.keki.com.keki.model.pojo.Pastry;
 import ke.co.keki.com.keki.presenter.MainViewPastryPresenter;
+import ke.co.keki.com.keki.utils.ConstantsPastry;
 
 /**
  * MainView Activity Class
  *
  * @author David Odari
  */
-public class MainActivity extends AppCompatActivity implements MainViewPastryContract.View {
+public class MainActivity extends AppCompatActivity implements MainViewPastryContract.View, PastryAdapter.IPastryClickHandler {
     private static String TAG = MainActivity.class.getSimpleName();
     MainViewPastryPresenter pastryPresenter;
     @BindView(R.id.rv_pastries)
@@ -49,12 +53,19 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
         Toolbar toolbar = findViewById(R.id.tb_support_toolbar);
         setSupportActionBar(toolbar);
         pastryPresenter = new MainViewPastryPresenter(this);
-        if (pastryPresenter.checkNetworkConnection(this)) {
-            pastryPresenter.onStart();
+        if (pastryPresenter.checkPermissions(this)) {
+            if (pastryPresenter.checkNetworkConnection(this)) {
+                pastryPresenter.onStart();
+            } else {
+                pastryPresenter.onError();
+            }
         } else {
-            pastryPresenter.onError();
+
         }
     }
+
+    //TODO GridView
+    //TODO Firebase
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
@@ -98,7 +109,14 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
         layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
-        mPastryAdapter = new PastryAdapter(pastries);
+        mPastryAdapter = new PastryAdapter(pastries, this);
         mRecyclerView.setAdapter(mPastryAdapter);
+    }
+
+    @Override
+    public void onPastryCardClicked(Pastry pastry, View v) {
+        Intent openDetailActivity = new Intent(MainActivity.this, DetailActivity.class);
+        openDetailActivity.putExtra(ConstantsPastry.PASTRY_NAME, Parcels.wrap(pastry.getName()));
+        startActivity(openDetailActivity);
     }
 }
