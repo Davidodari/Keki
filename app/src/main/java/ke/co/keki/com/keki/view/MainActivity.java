@@ -20,19 +20,20 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ke.co.keki.com.keki.R;
-import ke.co.keki.com.keki.contract.MainViewPastryContract;
+import ke.co.keki.com.keki.contract.PastryContract;
 import ke.co.keki.com.keki.model.pojo.Pastry;
-import ke.co.keki.com.keki.presenter.MainViewPastryPresenter;
-import ke.co.keki.com.keki.utils.ConstantsPastry;
+import ke.co.keki.com.keki.presenter.PastryPresenter;
+import ke.co.keki.com.keki.utils.PastryConstants;
 
 /**
  * MainView Activity Class
  *
  * @author David Odari
  */
-public class MainActivity extends AppCompatActivity implements MainViewPastryContract.View, PastryAdapter.IPastryClickHandler {
+public class MainActivity extends AppCompatActivity implements PastryContract.View, PastryAdapter.IPastryClickHandler {
+
     private static String TAG = MainActivity.class.getSimpleName();
-    MainViewPastryPresenter pastryPresenter;
+    PastryPresenter pastryPresenter;
     @BindView(R.id.rv_pastries)
     RecyclerView mRecyclerView;
     @BindView(R.id.pb_load)
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.tb_support_toolbar);
         setSupportActionBar(toolbar);
-        pastryPresenter = new MainViewPastryPresenter(this);
+        pastryPresenter = new PastryPresenter(this);
         if (pastryPresenter.checkPermissions(this)) {
             if (pastryPresenter.checkNetworkConnection(this)) {
                 pastryPresenter.onStart();
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements MainViewPastryCon
     @Override
     public void onPastryCardClicked(Pastry pastry, View v) {
         Intent openDetailActivity = new Intent(MainActivity.this, DetailActivity.class);
-        openDetailActivity.putExtra(ConstantsPastry.PASTRY_NAME, Parcels.wrap(pastry.getName()));
+        openDetailActivity.putExtra(PastryConstants.PASTRY, Parcels.wrap(pastry));
         startActivity(openDetailActivity);
     }
 }

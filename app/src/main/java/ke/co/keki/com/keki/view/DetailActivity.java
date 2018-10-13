@@ -5,17 +5,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import org.parceler.Parcels;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ke.co.keki.com.keki.R;
-import ke.co.keki.com.keki.utils.ConstantsPastry;
+import ke.co.keki.com.keki.contract.PastryDetailsContract;
+import ke.co.keki.com.keki.model.pojo.Pastry;
+import ke.co.keki.com.keki.presenter.PastryDetailsPresenter;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements PastryDetailsContract.View {
 
     @BindView(R.id.tv_pastry_name)
     TextView textViewPastryName;
+    PastryDetailsPresenter pastryDetailsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +33,15 @@ public class DetailActivity extends AppCompatActivity {
         //10. TODO Appropriate Variable Naming
         //11. TODO Animations on Open and Back
         Intent intent = getIntent();
-        if (intent.hasExtra(ConstantsPastry.PASTRY_NAME)) {
-            String pastryName = Parcels.unwrap(intent.getParcelableExtra(ConstantsPastry.PASTRY_NAME));
-            textViewPastryName.setText(pastryName);
-        }
+        pastryDetailsPresenter = new PastryDetailsPresenter(this);
+        pastryDetailsPresenter.onStart(intent);
+
+
+    }
+
+    @Override
+    public void bindViews(Pastry pastry) {
+     textViewPastryName.setText(pastry.getName());
     }
 
     //Back Navigation
