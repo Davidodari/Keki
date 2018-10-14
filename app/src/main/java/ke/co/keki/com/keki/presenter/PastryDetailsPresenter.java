@@ -24,7 +24,9 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
     public void onStart(Intent intent) {
         if (intent.hasExtra(PastryConstants.PASTRY)) {
             Pastry pastry = Parcels.unwrap(intent.getParcelableExtra(PastryConstants.PASTRY));
-            view.bindViews(pastry);
+            if (pastry != null) {
+                view.bindViews(pastry);
+            }
         }
     }
 }
