@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_support_toolbar"
+    <include layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorWhite"
-        android:elevation="4dp"
-        android:padding="8dp"
-        android:theme="@style/ToolbarTheme" />
-
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:padding="12dp"/>
 
     <include
-        layout="@layout/progress_xml"
+        layout="@layout/progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="48dp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_pastries"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layoutAnimation="@anim/layout_animation_main"
-        android:scrollbars="none"
-        tools:listitem="@layout/main_view_list_item" />
+    <include layout="@layout/recyclerview" />
 
 </LinearLayout>
