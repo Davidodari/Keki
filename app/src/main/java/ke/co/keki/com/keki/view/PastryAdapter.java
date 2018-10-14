@@ -30,7 +30,6 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
     public PastryAdapter(List<Pastry> mainViewPastryList, IPastryClickHandler iPastryClickHandler) {
         this.mainViewPastryList = mainViewPastryList;
         PastryAdapter.iPastryClickHandler = iPastryClickHandler;
-
     }
 
     @NonNull

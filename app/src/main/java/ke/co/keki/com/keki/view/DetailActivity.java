@@ -23,27 +23,24 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-
-        //4. TODO Create Fragments
-        //5. TODO Hook Up Fragments in detail activity
-        //6. TODO Create Phone Layout and Tab Layout
-        //7. TODO Create ExoPlayer Class and Custom Layout
-        //8. TODO View Testing and Data Testing in adapters
-        //9. TODO Add Comments and remove hard coded strings
-        //10. TODO Appropriate Variable Naming
-        //11. TODO Animations on Open and Back
         Intent intent = getIntent();
         pastryDetailsPresenter = new PastryDetailsPresenter(this);
         pastryDetailsPresenter.onStart(intent);
-
-
     }
 
     @Override
     public void bindViews(Pastry pastry) {
-     textViewPastryName.setText(pastry.getName());
+        textViewPastryName.setText(pastry.getName());
     }
 
+    //4. TODO Create Fragments
+    //5. TODO Hook Up Fragments in detail activity
+    //6. TODO Create Phone Layout and Tab Layout
+    //7. TODO Create ExoPlayer Class and Custom Layout
+    //8. TODO View Testing and Data Testing in adapters
+    //9. TODO Add Comments and remove hard coded strings
+    //10. TODO Appropriate Variable Naming
+    //11. TODO Animations on Open and Back
     //Back Navigation
     //Share Video or recipe
     //share app
