@@ -11,11 +11,11 @@ import ke.co.keki.com.keki.contract.PastryContract;
 import ke.co.keki.com.keki.model.PastryModel;
 import ke.co.keki.com.keki.model.pojo.Pastry;
 
+
 public class PastryPresenter implements PastryContract.Presenter {
 
     private PastryContract.View view;
     private PastryContract.Model model;
-
 
     public PastryPresenter(PastryContract.View view) {
         this.view = view;
@@ -39,6 +39,7 @@ public class PastryPresenter implements PastryContract.Presenter {
         view.onError();
     }
 
+
     /**
      * Checks Network State returns true if connected
      *
@@ -58,6 +59,10 @@ public class PastryPresenter implements PastryContract.Presenter {
 
     }
 
+    /**
+     * @param activity activity in which permissions are being requested
+     * @return check if permission has been granted or not true or false
+     */
     @Override
     public boolean checkPermissions(Activity activity) {
         return model.requestNetworkPermission(activity);
