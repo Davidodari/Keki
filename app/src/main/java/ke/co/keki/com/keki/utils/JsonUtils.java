@@ -43,9 +43,9 @@ public class JsonUtils {
     private final static String STEPS_THUMBNAIL_URL = "thumbnailURL";
 
     private static Pastry pastryObject;
-    static List<Ingredients> ingredientsList;
-    static List<Steps> stepsList;
-    static List<Pastry> pastriesList;
+    private static List<Ingredients> ingredientsList;
+    private static List<Steps> stepsList;
+    private static List<Pastry> pastries;
 
 
     /**
@@ -57,7 +57,7 @@ public class JsonUtils {
     public static List<Pastry> parseJSON(String jsonResponse) {
         ingredientsList = new ArrayList<>();
         stepsList = new ArrayList<>();
-        pastriesList = new ArrayList<>();
+        List<Pastry> pastriesList = new ArrayList<>();
 
         try {
             JSONArray jsonArrayResponse = new JSONArray(jsonResponse);
@@ -111,6 +111,15 @@ public class JsonUtils {
             Log.d(TAG, "jsonError");
         }
         Log.d(TAG, "pastryListSize:" + pastriesList.size());
+        setPastriesList(pastriesList);
         return pastriesList;
+    }
+
+    private static void setPastriesList(List<Pastry> pastries) {
+        JsonUtils.pastries = pastries;
+    }
+
+    public static List<Pastry> getPastries() {
+        return pastries;
     }
 }
