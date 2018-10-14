@@ -15,12 +15,11 @@
         android:padding="8dp"
         android:theme="@style/ToolbarTheme" />
 
-
     <include
         layout="@layout/progress_xml"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="48dp" />
+        android:layout_margin="72dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_pastries"
