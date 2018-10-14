@@ -13,7 +13,7 @@
         android:layout_margin="16dp"
         android:fontFamily="@font/playfair"
         android:padding="8dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

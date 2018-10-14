@@ -8,6 +8,7 @@ import java.util.List;
 import ke.co.keki.com.keki.model.pojo.Pastry;
 
 public interface PastryContract {
+
     interface Model {
 
         boolean requestNetworkPermission(Activity activity);
@@ -15,7 +16,6 @@ public interface PastryContract {
         void startNetworkCall(Presenter presenter);
 
         void endNetworkCall();
-
     }
 
     interface View {
@@ -24,7 +24,6 @@ public interface PastryContract {
         void progressBarShow();
 
         void onError();
-
     }
 
     interface Presenter {
@@ -41,6 +40,5 @@ public interface PastryContract {
         void onDestroy();
 
         void onError();
-
     }
 }
