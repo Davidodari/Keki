@@ -2,7 +2,6 @@ package ke.co.keki.com.keki.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +22,7 @@ import ke.co.keki.com.keki.R;
 import ke.co.keki.com.keki.contract.PastryContract;
 import ke.co.keki.com.keki.model.pojo.Pastry;
 import ke.co.keki.com.keki.presenter.PastryPresenter;
+import ke.co.keki.com.keki.utils.JsonUtils;
 import ke.co.keki.com.keki.utils.PastryConstants;
 
 /**
@@ -54,50 +54,46 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
         Toolbar toolbar = findViewById(R.id.tb_support_toolbar);
         setSupportActionBar(toolbar);
         pastryPresenter = new PastryPresenter(this);
-        if (pastryPresenter.checkPermissions(this)) {
-            if (pastryPresenter.checkNetworkConnection(this)) {
-                pastryPresenter.onStart();
-            } else {
-                pastryPresenter.onError();
-            }
+        if (pastryPresenter.checkNetworkConnection(this)) {
+            Log.d(TAG, "networkConnected::" + pastryPresenter.checkNetworkConnection(this));
+            pastryPresenter.onStart();
         } else {
-
+            Log.d(TAG, "networkConnected::" + pastryPresenter.checkNetworkConnection(this));
+            pastryPresenter.onError();
         }
     }
 
-    //TODO GridView
-    //TODO Firebase
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-    }
-
+    /**
+     * On Activity Deatroyed
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
         pastryPresenter.onDestroy();
     }
 
-
+    /**
+     * @param pastries list of pastries to be passed on to adapter after being converted from
+     *                 JSON to Java Objects
+     */
     @Override
     public void onDataLoaded(List<Pastry> pastries) {
-        Log.d(TAG, "" + pastries.size());
-        if (textViewError.getVisibility() == View.VISIBLE) {
-            textViewError.setVisibility(View.GONE);
-            imageViewNetworkConnection.setVisibility(View.GONE);
-        }
-        progressBar.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
+        Log.d(TAG, "pastrySize" + pastries.size());
         setupRecyclerView(pastries);
     }
 
+    /**
+     * While Model Loads Show Progess Bar
+     */
     @Override
     public void progressBarShow() {
         progressBar.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.GONE);
     }
 
+    /**
+     * On network connection Error Display message
+     */
     @Override
     public void onError() {
         textViewError.setVisibility(View.VISIBLE);
@@ -106,7 +102,14 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
         mRecyclerView.setVisibility(View.GONE);
     }
 
+
     public void setupRecyclerView(List<Pastry> pastries) {
+        if (textViewError.getVisibility() == View.VISIBLE) {
+            textViewError.setVisibility(View.GONE);
+            imageViewNetworkConnection.setVisibility(View.GONE);
+        }
+        progressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
         layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -114,10 +117,33 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
         mRecyclerView.setAdapter(mPastryAdapter);
     }
 
+    /**
+     * Opens Detaill Activity
+     *
+     * @param pastry pastry item clicked and passed to details activity
+     * @param v      view on which item click is being performed on
+     */
     @Override
     public void onPastryCardClicked(Pastry pastry, View v) {
         Intent openDetailActivity = new Intent(MainActivity.this, DetailActivity.class);
         openDetailActivity.putExtra(PastryConstants.PASTRY, Parcels.wrap(pastry));
         startActivity(openDetailActivity);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(PastryConstants.PASTRY_LIST, Parcels.wrap(JsonUtils.getPastries()));
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null && savedInstanceState.containsKey(PastryConstants.PASTRY_LIST)) {
+            List<Pastry> pastries = Parcels.unwrap(savedInstanceState.getParcelable(PastryConstants.PASTRY_LIST));
+            if (pastries != null && pastries.size() > 0) {
+                setupRecyclerView(pastries);
+            }
+        }
     }
 }
