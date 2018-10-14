@@ -166,7 +166,10 @@ public class PastryModel implements PastryContract.Model {
                 } else {
                     presenter.onError();
                 }
+            }else {
+                presenter.onError();
             }
         }
     }
+
 }
