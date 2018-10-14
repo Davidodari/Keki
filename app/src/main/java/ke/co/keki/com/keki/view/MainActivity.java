@@ -1,14 +1,17 @@
 package ke.co.keki.com.keki.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -33,9 +36,10 @@ import ke.co.keki.com.keki.utils.PastryConstants;
 public class MainActivity extends AppCompatActivity implements PastryContract.View, PastryAdapter.IPastryClickHandler {
 
     private static String TAG = MainActivity.class.getSimpleName();
+    private GridLayoutManager gridLayoutManager;
     PastryPresenter pastryPresenter;
     @BindView(R.id.rv_pastries)
-    RecyclerView mRecyclerView;
+    RecyclerView mPastryListRecyclerView;
     @BindView(R.id.pb_load)
     ProgressBar progressBar;
     @BindView(R.id.tv_error)
@@ -43,7 +47,8 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
     @BindView(R.id.iv_offline)
     ImageView imageViewNetworkConnection;
     PastryAdapter mPastryAdapter;
-    RecyclerView.LayoutManager layoutManager;
+    @BindView(R.id.progress_layout)
+    LinearLayout linearLayout;
 
 
     @Override
@@ -88,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
     @Override
     public void progressBarShow() {
         progressBar.setVisibility(View.VISIBLE);
-        mRecyclerView.setVisibility(View.GONE);
+        mPastryListRecyclerView.setVisibility(View.GONE);
     }
 
     /**
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
         textViewError.setVisibility(View.VISIBLE);
         imageViewNetworkConnection.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.GONE);
+        mPastryListRecyclerView.setVisibility(View.GONE);
     }
 
 
@@ -109,12 +114,29 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
             imageViewNetworkConnection.setVisibility(View.GONE);
         }
         progressBar.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-        layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(layoutManager);
+        linearLayout.setVisibility(View.GONE);
+        mPastryListRecyclerView.setVisibility(View.VISIBLE);
+        gridLayoutManager = new GridLayoutManager(getApplicationContext(), calculateNoOfColumns(this));
+        mPastryListRecyclerView.setHasFixedSize(true);
+        mPastryListRecyclerView.setLayoutManager(gridLayoutManager);
+        mPastryListRecyclerView.setItemViewCacheSize(4);
+        mPastryListRecyclerView.setDrawingCacheEnabled(true);
         mPastryAdapter = new PastryAdapter(pastries, this);
-        mRecyclerView.setAdapter(mPastryAdapter);
+        mPastryListRecyclerView.setAdapter(mPastryAdapter);
+    }
+
+    /**
+     * @param context Recycler view instance
+     * @return number of columns for span count
+     */
+    public static int calculateNoOfColumns(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        int scaleFactor = 200;
+        int noOfColumns = (int) (dpWidth / scaleFactor);
+        if (noOfColumns == 3)
+            noOfColumns = 2;
+        return noOfColumns;
     }
 
     /**
