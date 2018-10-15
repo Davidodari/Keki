@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tb_support_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="top">
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorWhite"
+    android:elevation="8dp"
+    android:minHeight="?attr/actionBarSize"
+    android:padding="4dp"
+    android:theme="@style/ToolbarTheme" />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_support_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorWhite"
-        android:minHeight="?attr/actionBarSize"
-        android:padding="4dp"
-        android:elevation="8dp"
-        android:theme="@style/ToolbarTheme" />
 
-</FrameLayout>
