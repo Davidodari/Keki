@@ -1,13 +1,11 @@
 package ke.co.keki.com.keki.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,7 +34,6 @@ import ke.co.keki.com.keki.utils.PastryConstants;
 public class MainActivity extends AppCompatActivity implements PastryContract.View, PastryAdapter.IPastryClickHandler {
 
     private static String TAG = MainActivity.class.getSimpleName();
-    private GridLayoutManager gridLayoutManager;
     PastryPresenter pastryPresenter;
     @BindView(R.id.rv_pastries)
     RecyclerView mPastryListRecyclerView;
@@ -108,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
     }
 
 
-    public void setupRecyclerView(List<Pastry> pastries) {
+    private void setupRecyclerView(List<Pastry> pastries) {
         if (textViewError.getVisibility() == View.VISIBLE) {
             textViewError.setVisibility(View.GONE);
             imageViewNetworkConnection.setVisibility(View.GONE);
@@ -116,27 +113,13 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
         progressBar.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
         mPastryListRecyclerView.setVisibility(View.VISIBLE);
-        gridLayoutManager = new GridLayoutManager(getApplicationContext(), calculateNoOfColumns(this));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), PastryConstants.calculateNoOfColumns(this));
         mPastryListRecyclerView.setHasFixedSize(true);
         mPastryListRecyclerView.setLayoutManager(gridLayoutManager);
         mPastryListRecyclerView.setItemViewCacheSize(4);
         mPastryListRecyclerView.setDrawingCacheEnabled(true);
         mPastryAdapter = new PastryAdapter(pastries, this);
         mPastryListRecyclerView.setAdapter(mPastryAdapter);
-    }
-
-    /**
-     * @param context Recycler view instance
-     * @return number of columns for span count
-     */
-    public static int calculateNoOfColumns(Context context) {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        int scaleFactor = 200;
-        int noOfColumns = (int) (dpWidth / scaleFactor);
-        if (noOfColumns == 3)
-            noOfColumns = 2;
-        return noOfColumns;
     }
 
     /**
