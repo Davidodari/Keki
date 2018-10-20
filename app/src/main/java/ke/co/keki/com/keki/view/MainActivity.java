@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,7 +32,6 @@ import ke.co.keki.com.keki.utils.PastryConstants;
  */
 public class MainActivity extends AppCompatActivity implements PastryContract.View, PastryAdapter.IPastryClickHandler {
 
-    private static String TAG = MainActivity.class.getSimpleName();
     PastryPresenter pastryPresenter;
     @BindView(R.id.rv_pastries)
     RecyclerView mPastryListRecyclerView;
@@ -47,26 +45,23 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
     @BindView(R.id.progress_layout)
     LinearLayout linearLayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Toolbar toolbar = findViewById(R.id.tb_support_toolbar);
+        Toolbar toolbar = findViewById(R.id.tb_main_toolbar);
         setSupportActionBar(toolbar);
         pastryPresenter = new PastryPresenter(this);
         if (pastryPresenter.checkNetworkConnection(this)) {
-            Log.d(TAG, "networkConnected::" + pastryPresenter.checkNetworkConnection(this));
             pastryPresenter.onStart();
         } else {
-            Log.d(TAG, "networkConnected::" + pastryPresenter.checkNetworkConnection(this));
             pastryPresenter.onError();
         }
     }
 
     /**
-     * On Activity Deatroyed
+     * On Activity Deatroyed call off async task
      */
     @Override
     protected void onDestroy() {
@@ -80,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
      */
     @Override
     public void onDataLoaded(List<Pastry> pastries) {
-        Log.d(TAG, "pastrySize" + pastries.size());
         setupRecyclerView(pastries);
     }
 
