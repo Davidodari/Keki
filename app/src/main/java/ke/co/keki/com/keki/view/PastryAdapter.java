@@ -21,26 +21,24 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 
 public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdapterViewHolder> {
 
-    private static String TAG = PastryAdapter.class.getSimpleName();
     private List<Pastry> mainViewPastryList;
-    public static IPastryClickHandler iPastryClickHandler;
-
+    private static IPastryClickHandler iPastryClickHandler;
 
     //Adapter takes in presenter to handle data operations
-    public PastryAdapter(List<Pastry> mainViewPastryList, IPastryClickHandler iPastryClickHandler) {
+    PastryAdapter(List<Pastry> mainViewPastryList, IPastryClickHandler iPastryClickHandlerParams) {
         this.mainViewPastryList = mainViewPastryList;
-        PastryAdapter.iPastryClickHandler = iPastryClickHandler;
+        iPastryClickHandler = iPastryClickHandlerParams;
     }
 
     @NonNull
     @Override
     public PastryAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         int layoutId = R.layout.main_view_list_item;
-        boolean shouldAttachToParremtImmediately = false;
+        final boolean shouldAttachToParremtImmediately = false;
         Context context = viewGroup.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(layoutId, viewGroup, shouldAttachToParremtImmediately);
-        return new PastryAdapterViewHolder(v);
+        LayoutInflater pastryInflater = LayoutInflater.from(context);
+        View view = pastryInflater.inflate(layoutId, viewGroup, shouldAttachToParremtImmediately);
+        return new PastryAdapterViewHolder(view);
     }
 
     @Override
@@ -57,7 +55,6 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
     class PastryAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //Bind Views
-
         @BindView(R.id.iv_pastry_image)
         ImageView mPastryImageView;
         @BindView(R.id.tv_pastry_title)
@@ -65,14 +62,13 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         @BindView(R.id.tv_no_of_servings)
         TextView mPastryServingValueTextView;
 
-
-        public PastryAdapterViewHolder(@NonNull View itemView) {
+        PastryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
-        public void bind(Pastry pastry) {
+        void bind(Pastry pastry) {
             mPastryTitleTextView.setText(pastry.getName());
             if (pastry.getImage().equals("")) {
                 mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.donut));

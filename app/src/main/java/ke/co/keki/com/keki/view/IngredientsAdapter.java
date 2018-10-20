@@ -20,7 +20,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
     private List<Ingredients> mIngredients;
 
-    public IngredientsAdapter(List<Ingredients> mIngredients) {
+    IngredientsAdapter(List<Ingredients> mIngredients) {
         this.mIngredients = mIngredients;
     }
 
@@ -45,23 +45,24 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     }
 
     class IngredientsViewHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.tv_ingredient_name)
         TextView ingredientItemNameTextView;
         @BindView(R.id.tv_ingredient_measure)
-        TextView ingredientMeasure;
+        TextView ingredientMeasureTextView;
         @BindView(R.id.tv_ingredient_quantity)
-        TextView ingredientQuantity;
+        TextView ingredientQuantityTextView;
 
-        public IngredientsViewHolder(@NonNull View itemView) {
+        IngredientsViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
         void bindViews(Ingredients ingredients) {
             ingredientItemNameTextView.setText(ingredients.getIngredientItem());
-            ingredientMeasure.setText(ingredients.getMeasure());
+            ingredientMeasureTextView.setText(ingredients.getMeasure());
             String quantity = String.format(Locale.getDefault(), "%d", ingredients.getQuantity());
-            ingredientQuantity.setText(quantity);
+            ingredientQuantityTextView.setText(quantity);
         }
     }
 }
