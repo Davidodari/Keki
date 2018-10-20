@@ -39,7 +39,7 @@
             android:layout_gravity="bottom|start"
             android:layout_marginStart="@dimen/pastry_title_margin"
             android:layout_marginBottom="@dimen/pastry_title_margin_bottom"
-            android:fontFamily="@font/playfair"
+            android:fontFamily="@font/raleway"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
             android:textColor="@color/colorWhite"
             tools:text="Sicko Pie" />

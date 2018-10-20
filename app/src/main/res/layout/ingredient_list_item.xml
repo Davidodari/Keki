@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/ingredient_name_margin_start"
-        android:fontFamily="@font/playfair"
+        android:fontFamily="@font/raleway"
         android:textSize="@dimen/ingedient_name_size"
         app:layout_constraintBottom_toBottomOf="@id/circle_item"
         app:layout_constraintStart_toEndOf="@id/circle_item"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/playfair"
+            android:fontFamily="@font/raleway"
             android:padding="@dimen/padding_default"
             android:textAlignment="center"
             tools:text="4" />
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/playfair"
+            android:fontFamily="@font/raleway"
             android:padding="@dimen/padding_default"
             tools:text="TBSP" />
     </LinearLayout>
