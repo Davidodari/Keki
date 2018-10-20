@@ -10,7 +10,7 @@ After creation copy Google Services Json file to app module folder for successfu
 
 ## Screenshots
 
-| [![Screen1](https://github.com/Davidodari/Smoovie-android-TMDb/blob/master/Screenshot1.png)] | [![Screen2](https://github.com/Davidodari/Smoovie-android-TMDb/blob/master/Screenshot_2.png)] |
+| ![Screen1](https://github.com/Davidodari/Keki_App/blob/master/Main%20Screen.png) | ![Screen2](https://github.com/Davidodari/Keki_App/blob/master/Details%20Screen.png) |
 |:---:|:---:|
 | Main Screen | Details Screen |
 
