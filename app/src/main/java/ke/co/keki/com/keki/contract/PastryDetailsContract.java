@@ -15,6 +15,6 @@ public interface PastryDetailsContract {
     }
 
     interface Presenter {
-        void onStart(Intent intent);
+        void onStart(@NonNull Intent intent);
     }
 }

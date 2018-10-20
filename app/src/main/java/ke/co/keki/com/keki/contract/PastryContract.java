@@ -1,6 +1,5 @@
 package ke.co.keki.com.keki.contract;
 
-import android.app.Activity;
 import android.content.Context;
 
 import java.util.List;
@@ -10,8 +9,6 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 public interface PastryContract {
 
     interface Model {
-
-        boolean requestNetworkPermission(Activity activity);
 
         void startNetworkCall(Presenter presenter);
 
@@ -28,8 +25,6 @@ public interface PastryContract {
 
     interface Presenter {
         boolean checkNetworkConnection(Context context);
-
-        boolean checkPermissions(Activity activity);
 
         void asyncLoadingInBackground();
 
