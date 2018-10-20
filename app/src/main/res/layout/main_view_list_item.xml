@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/root_card_view_height"
     android:layout_marginStart="@dimen/root_card_view_margin_sides_hor"
-    android:layout_marginEnd="@dimen/root_card_view_margin_sides_hor"
     android:layout_marginTop="@dimen/root_card_view_margin_sides_ver"
+    android:layout_marginEnd="@dimen/root_card_view_margin_sides_hor"
     android:layout_marginBottom="@dimen/root_card_view_margin_sides_ver"
     android:clickable="true"
     android:elevation="@dimen/root_card_view_elevation"
@@ -25,7 +25,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/mainview_image_content_description"
             android:scaleType="centerCrop"
-            tools:src="@drawable/default_im" />
+            tools:src="@drawable/donut" />
 
         <View
             android:layout_width="match_parent"
@@ -70,6 +70,7 @@
                 style="@style/TextViewStyle"
                 android:layout_marginStart="@dimen/pastry_serving_title_margin_start"
                 tools:text="0" />
+
         </LinearLayout>
 
     </FrameLayout>
