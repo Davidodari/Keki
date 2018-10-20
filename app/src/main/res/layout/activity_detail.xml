@@ -18,7 +18,7 @@
         android:layout_margin="@dimen/margin_default"
         android:fontFamily="@font/raleway"
         android:padding="@dimen/padding_normal"
-        android:textStyle="bold"
+        android:textStyle="normal"
         android:textColor="@color/colorPrimaryDark"
         android:text="@string/label_ingredients" />
 
@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
         android:orientation="vertical"
+        android:layoutAnimation="@anim/layout_animation_main"
         android:scrollbars="none"
         tools:listitem="@layout/ingredient_list_item" />
 
