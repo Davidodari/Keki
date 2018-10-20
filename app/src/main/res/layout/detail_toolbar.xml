@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tb_support_toolbar"
+    android:id="@+id/tb_detail_support"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorWhite"
-    android:elevation="8dp"
+    android:elevation="@dimen/toolbar_elevation"
     android:minHeight="?attr/actionBarSize"
-    android:padding="4dp"
     android:theme="@style/ToolbarTheme" />
 
 
