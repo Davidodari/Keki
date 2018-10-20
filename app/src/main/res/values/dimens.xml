@@ -29,5 +29,32 @@
     <!--View image scrim height/black overlay over image view-->
     <dimen name="view_height_scrim">200dp</dimen>
 
+    <!--Margins-->
+    <dimen name="margin_default">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_large">48dp</dimen>
 
+    <!--Elevation-->
+    <dimen name="toolbar_elevation">8dp</dimen>
+
+    <!--Padding-->
+    <dimen name="padding_default">4dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
+
+    <!--Constraint guidelines-->
+    <dimen name="guideline_default">16dp</dimen>
+
+    <!--View - (Ingredients List Item) Height and Width-->
+    <dimen name="view_lsyout_width_title">32dp</dimen>
+    <dimen name="view_layout_height">2dp</dimen>
+    <dimen name="view_lsyout_width">16dp</dimen>
+
+    <!--List Item Circle Holding Quantity and Measure-->
+    <dimen name="layout_square_width">64dp</dimen>
+
+    <!--Ingredient Name Text Size-->
+    <dimen name="ingedient_name_size">16sp</dimen>
+
+    <!--Ingredient Name Margin Start Size-->
+    <dimen name="ingredient_name_margin_start">80dp</dimen>
 </resources>
