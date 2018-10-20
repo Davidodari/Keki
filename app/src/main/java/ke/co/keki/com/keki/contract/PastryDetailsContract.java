@@ -1,6 +1,7 @@
 package ke.co.keki.com.keki.contract;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import ke.co.keki.com.keki.model.pojo.Pastry;
 
@@ -10,7 +11,7 @@ public interface PastryDetailsContract {
     }
 
     interface View {
-        void bindViews(Pastry pastry);
+        void bindViews(@NonNull Pastry pastry);
     }
 
     interface Presenter {
