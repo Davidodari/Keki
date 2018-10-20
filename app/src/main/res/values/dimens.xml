@@ -57,4 +57,7 @@
 
     <!--Ingredient Name Margin Start Size-->
     <dimen name="ingredient_name_margin_start">80dp</dimen>
+
+    <!--Network Error Text -->
+    <dimen name="network_connection_error">15sp</dimen>
 </resources>
