@@ -1,7 +1,5 @@
 package ke.co.keki.com.keki.utils;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,9 +40,6 @@ public class JsonUtils {
     private final static String STEPS_VIDEO_URL = "videoURL";
     private final static String STEPS_THUMBNAIL_URL = "thumbnailURL";
 
-    private static Pastry pastryObject;
-    private static List<Ingredients> ingredientsList;
-    private static List<Steps> stepsList;
     private static List<Pastry> pastries;
 
 
@@ -55,45 +50,45 @@ public class JsonUtils {
      * @return list of pastries parsed from the JSON RESPONSE
      */
     public static List<Pastry> parseJSON(String jsonResponse) {
-        ingredientsList = new ArrayList<>();
-        stepsList = new ArrayList<>();
+
+        Pastry pastryObject;
+        //List Of Ingredients for each pastry
+        List<Ingredients> ingredientsList = new ArrayList<>();
+        //List of each step for each pastry
+        List<Steps> stepsList = new ArrayList<>();
+        //List of pastries
         List<Pastry> pastriesList = new ArrayList<>();
 
         try {
             JSONArray jsonArrayResponse = new JSONArray(jsonResponse);
             //no of elements = 4
-
+            //for each object set its properties below and add object to list
             for (int i = 0; i < jsonArrayResponse.length(); i++) {
                 //get each object piece by piece
                 JSONObject pastriesObject = jsonArrayResponse.getJSONObject(i);
-                //object properties
+                //Pastry Object properties
                 int pastryId = pastriesObject.getInt(PASTRY_ID);
                 String pastryName = pastriesObject.getString(PASTRY_NAME);
                 int pastryServings = pastriesObject.getInt(PASTRY_SERVINGS);
                 String pastryImage = pastriesObject.getString(PASTRY_IMAGE);
-
-                //JSON ARRAYS
+                //Pastry Object Ingredients
                 JSONArray ingredients = pastriesObject.getJSONArray(PASTRY_INGREDIENTS);
                 for (int ingredientItem = 0; ingredientItem < ingredients.length(); ingredientItem++) {
                     //get each ingredient one by one;
                     JSONObject ingredObject = ingredients.getJSONObject(ingredientItem);
-
                     int quantity;
                     String measure, item;
-                    //ingredient item
                     quantity = ingredObject.getInt(INGREDIENT_QUANTITY);
                     measure = ingredObject.getString(INGREDIENT_MEASURE);
                     item = ingredObject.getString(INGREDIENT_ITEM);
-                    //Add ingredient to list
                     ingredientsList.add(new Ingredients(quantity, measure, item));
-
                 }
+                //Pastry Object Steps
                 JSONArray steps = pastriesObject.getJSONArray(PASTRY_STEPS);
                 for (int stepsToFollow = 0; stepsToFollow < steps.length(); stepsToFollow++) {
                     JSONObject stepsObject = steps.getJSONObject(stepsToFollow);
                     int id;
                     String shortDescription, description, videoUrl, thumbnailUrl;
-
                     id = stepsObject.getInt(STEPS_ID);
                     shortDescription = stepsObject.getString(STEPS_SHORT_DESCRIPTION);
                     description = stepsObject.getString(STEPS_DESCRIPTION);
@@ -102,21 +97,19 @@ public class JsonUtils {
                     stepsList.add(new Steps(id, shortDescription, description, videoUrl, thumbnailUrl));
                 }
                 pastryObject = new Pastry(pastryId, pastryName, ingredientsList, stepsList, pastryServings, pastryImage);
-                Log.d(TAG, "pastryName" + pastryObject.getName());
                 pastriesList.add(pastryObject);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.d(TAG, "jsonError");
         }
-        Log.d(TAG, "pastryListSize:" + pastriesList.size());
         setPastriesList(pastriesList);
         return pastriesList;
     }
 
-    private static void setPastriesList(List<Pastry> pastries) {
-        JsonUtils.pastries = pastries;
+    //    Pastry List setter and getter
+    private static void setPastriesList(List<Pastry> pastriesList) {
+        pastries = pastriesList;
     }
 
     public static List<Pastry> getPastries() {

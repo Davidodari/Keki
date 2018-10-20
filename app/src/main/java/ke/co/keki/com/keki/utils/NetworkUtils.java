@@ -1,7 +1,6 @@
 package ke.co.keki.com.keki.utils;
 
 import android.net.Uri;
-import android.util.Log;
 import android.webkit.URLUtil;
 
 import java.io.IOException;
@@ -18,9 +17,6 @@ import java.util.Scanner;
  */
 public class NetworkUtils {
 
-
-    private static String TAG = NetworkUtils.class.getSimpleName();
-
     public static URL builtUrl(String url) {
         Uri builtJsonUri = Uri.parse(url);
         URL Url = null;
@@ -29,7 +25,6 @@ public class NetworkUtils {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
         return (URLUtil.isValidUrl(url)) ? Url : null;
     }
 
@@ -39,9 +34,7 @@ public class NetworkUtils {
             InputStream in = urlConnection.getInputStream();
             Scanner scanner = new Scanner(in);
             scanner.useDelimiter("\\A");
-
             boolean hasInput = scanner.hasNext();
-            Log.d(TAG, "hasinput::" + hasInput);
             if (hasInput) {
                 return scanner.next();
             } else {
