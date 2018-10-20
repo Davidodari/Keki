@@ -5,17 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:padding="12dp"/>
+    <include layout="@layout/main_toolbar" />
 
     <include
         layout="@layout/progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="48dp" />
+        android:layout_margin="@dimen/margin_large" />
 
     <include layout="@layout/recyclerview" />
 
