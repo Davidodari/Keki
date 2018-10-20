@@ -25,7 +25,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/mainview_image_content_description"
             android:scaleType="centerCrop"
-            tools:src="@drawable/donut" />
+            tools:src="@drawable/pastry_drawable_b" />
 
         <View
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:layout_marginBottom="@dimen/pastry_title_margin_bottom"
             android:fontFamily="@font/raleway"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimaryLight"
             tools:text="Sicko Pie" />
 
         <View

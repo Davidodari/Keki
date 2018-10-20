@@ -71,7 +71,17 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         void bind(Pastry pastry) {
             mPastryTitleTextView.setText(pastry.getName());
             if (pastry.getImage().equals("")) {
-                mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.donut));
+                if (pastry.getName().startsWith("N")) {
+                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_n));
+                } else if (pastry.getName().startsWith("B")) {
+                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_b));
+                } else if (pastry.getName().startsWith("Y")) {
+                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_y));
+                } else if (pastry.getName().startsWith("C")) {
+                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_c));
+                } else {
+                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.donut));
+                }
             } else {
                 Picasso.get().load(pastry.getImage()).into(mPastryImageView);
             }
