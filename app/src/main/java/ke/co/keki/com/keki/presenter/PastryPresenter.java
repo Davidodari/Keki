@@ -1,6 +1,5 @@
 package ke.co.keki.com.keki.presenter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -39,7 +38,6 @@ public class PastryPresenter implements PastryContract.Presenter {
         view.onError();
     }
 
-
     /**
      * Checks Network State returns true if connected
      *
@@ -48,7 +46,6 @@ public class PastryPresenter implements PastryContract.Presenter {
      */
     @Override
     public boolean checkNetworkConnection(Context context) {
-
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -56,16 +53,6 @@ public class PastryPresenter implements PastryContract.Presenter {
         } else {
             return false;
         }
-
-    }
-
-    /**
-     * @param activity activity in which permissions are being requested
-     * @return check if permission has been granted or not true or false
-     */
-    @Override
-    public boolean checkPermissions(Activity activity) {
-        return model.requestNetworkPermission(activity);
     }
 
     /**

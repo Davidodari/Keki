@@ -1,6 +1,7 @@
 package ke.co.keki.com.keki.presenter;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import org.parceler.Parcels;
 
@@ -21,7 +22,7 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
     }
 
     @Override
-    public void onStart(Intent intent) {
+    public void onStart(@NonNull Intent intent) {
         if (intent.hasExtra(PastryConstants.PASTRY)) {
             Pastry pastry = Parcels.unwrap(intent.getParcelableExtra(PastryConstants.PASTRY));
             if (pastry != null) {
