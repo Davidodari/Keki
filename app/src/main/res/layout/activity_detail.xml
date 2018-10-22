@@ -18,8 +18,8 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
         android:layout_marginTop="?attr/actionBarSize"
+        android:padding="@dimen/padding_normal"
         app:layout_constraintTop_toBottomOf="@id/frame">
 
         <LinearLayout
@@ -29,13 +29,10 @@
 
             <TextView
                 android:id="@+id/tv_label_ingredients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/TextViewStyle"
+                android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_default"
-                android:fontFamily="@font/raleway"
                 android:text="@string/label_ingredients"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
 
 
@@ -51,14 +48,10 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TextViewStyle"
                 android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:fontFamily="@font/raleway"
-                android:padding="8dp"
-                android:text="Preparation Steps"
-                android:textColor="@color/colorPrimaryDark"
+                android:layout_margin="@dimen/margin_default"
+                android:text="@string/label_steps_section"
                 android:textSize="20sp" />
 
             <Button
@@ -66,13 +59,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_default"
                 android:background="@drawable/btn_view_steps_background"
                 android:elevation="8dp"
                 android:fontFamily="@font/raleway"
-                android:padding="16dp"
-                android:text="View Steps"
-                android:translationZ="12dp" />
+                android:padding="@dimen/padding_medium"
+                android:text="@string/label_button_view_steps"
+                android:translationZ="@dimen/translation_elevation" />
 
         </LinearLayout>
 
