@@ -13,20 +13,21 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">@font/raleway</item>
         <item name="android:textSize">@dimen/pastry_serving_text_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!--Custom Toolbar Style-->
-    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:fontFamily">@font/raleway</item>
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:fontFamily">@font/titlebar_font</item>
     </style>
 
     <style name="ToolBarStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">@color/colorWhite</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:elevation">@dimen/toolbar_elevation</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
     </style>

@@ -36,11 +36,13 @@
     <dimen name="margin_large">48dp</dimen>
 
     <!--Elevation-->
-    <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="translation_elevation">12dp</dimen>
 
     <!--Padding-->
     <dimen name="padding_default">4dp</dimen>
     <dimen name="padding_normal">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
 
     <!--Constraint guidelines-->
     <dimen name="guideline_default">16dp</dimen>
