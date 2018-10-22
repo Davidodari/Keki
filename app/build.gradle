@@ -51,6 +51,7 @@ dependencies {
     implementation "com.google.firebase:firebase-core:${firebaseCoreVersion}"
     implementation "com.crashlytics.sdk.android:crashlytics:${firebaseCrashlyticsVersion}"
     implementation "com.google.firebase:firebase-messaging:${firebaseCloudMessagingVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
     annotationProcessor "org.parceler:parceler:${parcelerVersion}"
     annotationProcessor "android.arch.persistence.room:compiler:${architectureLibraryVersion}"
