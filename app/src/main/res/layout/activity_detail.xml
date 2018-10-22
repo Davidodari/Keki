@@ -1,37 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <include
-        layout="@layout/detail_toolbar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_label_ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_default"
-        android:fontFamily="@font/raleway"
-        android:padding="@dimen/padding_normal"
-        android:textStyle="normal"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="@string/label_ingredients" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_ingredients"
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:orientation="vertical"
-        android:layoutAnimation="@anim/layout_animation_main"
-        android:scrollbars="none"
-        tools:listitem="@layout/ingredient_list_item" />
+        app:layout_constraintTop_toTopOf="parent">
+        <include layout="@layout/detail_toolbar" />
+    </FrameLayout>
 
 
-</LinearLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_constraintTop_toBottomOf="@id/frame">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_label_ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:fontFamily="@font/raleway"
+                android:text="@string/label_ingredients"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:layoutAnimation="@anim/layout_animation_main"
+                android:orientation="vertical"
+                android:scrollbars="none"
+                tools:listitem="@layout/ingredient_list_item" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/raleway"
+                android:padding="8dp"
+                android:text="Preparation Steps"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_view_steps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_margin="8dp"
+                android:background="@drawable/btn_view_steps_background"
+                android:elevation="8dp"
+                android:fontFamily="@font/raleway"
+                android:padding="16dp"
+                android:text="View Steps"
+                android:translationZ="12dp" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.constraint.ConstraintLayout>
+
