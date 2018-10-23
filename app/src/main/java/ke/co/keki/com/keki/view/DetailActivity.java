@@ -8,12 +8,19 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+
+import org.parceler.Parcels;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ke.co.keki.com.keki.R;
 import ke.co.keki.com.keki.contract.PastryDetailsContract;
 import ke.co.keki.com.keki.model.pojo.Pastry;
+import ke.co.keki.com.keki.model.pojo.Steps;
 import ke.co.keki.com.keki.presenter.PastryDetailsPresenter;
 import ke.co.keki.com.keki.utils.PastryConstants;
 
@@ -21,6 +28,8 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
 
     @BindView(R.id.rv_ingredients)
     RecyclerView ingredientsRecyclerView;
+    @BindView(R.id.btn_view_steps)
+    Button btnViewSteps;
     PastryDetailsPresenter pastryDetailsPresenter;
     GridLayoutManager gridLayoutManager;
     IngredientsAdapter ingredientsAdapter;
@@ -62,13 +71,21 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         ingredientsRecyclerView.addItemDecoration(itemDecoration);
         ingredientsAdapter = new IngredientsAdapter(pastry.getIngredientsList());
         ingredientsRecyclerView.setAdapter(ingredientsAdapter);
+        final List<Steps> mPastry = pastry.getStepsList();
+        btnViewSteps.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pastryDetailsPresenter.onClicked(mPastry);
+                    }
+                }
+        );
     }
 
-    //4. TODO Create Fragments
-    //5. TODO Hook Up Fragments in detail activity
-    //6. TODO Create Phone Layout and Tab Layout
-    //7. TODO Create ExoPlayer Class and Custom Layout
-    //8. TODO View Testing and Data Testing in adapters
-    //10. TODO Appropriate Variable Naming
-    //11. TODO Animations on Open and Back
+    @Override
+    public void openStepView(List<Steps> stepsList) {
+        Intent intent = new Intent(DetailActivity.this, StepsActivity.class);
+        intent.putExtra("STEPS_LIST", Parcels.wrap(stepsList));
+        startActivity(intent);
+    }
 }

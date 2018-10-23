@@ -33,6 +33,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_default"
                 android:text="@string/label_ingredients"
+                android:textStyle="normal"
                 android:textSize="20sp" />
 
 
@@ -41,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
-                android:layoutAnimation="@anim/layout_animation_main"
+                android:layoutAnimation="@anim/layout_animation_ingred"
                 android:orientation="vertical"
                 android:scrollbars="none"
                 tools:listitem="@layout/ingredient_list_item" />
@@ -52,6 +53,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_default"
                 android:text="@string/label_steps_section"
+                android:textStyle="normal"
                 android:textSize="20sp" />
 
             <Button
@@ -61,8 +63,9 @@
                 android:layout_gravity="center|bottom"
                 android:layout_margin="@dimen/margin_default"
                 android:background="@drawable/btn_view_steps_background"
-                android:elevation="8dp"
+                android:elevation="@dimen/translation_elevation"
                 android:fontFamily="@font/raleway"
+                android:onClick="openStepsIntent"
                 android:padding="@dimen/padding_medium"
                 android:text="@string/label_button_view_steps"
                 android:translationZ="@dimen/translation_elevation" />
