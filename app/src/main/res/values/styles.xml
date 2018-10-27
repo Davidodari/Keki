@@ -20,7 +20,7 @@
     </style>
 
     <!--Custom Toolbar Style-->
-    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark">
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:fontFamily">@font/titlebar_font</item>
     </style>
 
