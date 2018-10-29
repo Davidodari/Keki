@@ -3,6 +3,8 @@ package ke.co.keki.com.keki.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,6 +35,8 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
     PastryDetailsPresenter pastryDetailsPresenter;
     GridLayoutManager gridLayoutManager;
     IngredientsAdapter ingredientsAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,4 +92,5 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         intent.putExtra("STEPS_LIST", Parcels.wrap(stepsList));
         startActivity(intent);
     }
+
 }

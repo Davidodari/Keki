@@ -7,4 +7,5 @@
     <string name="label_ingredients">Ingredients</string>
     <string name="label_button_view_steps">View Steps</string>
     <string name="label_steps_section">Preparation Steps</string>
+    <string name="label_thumbnail">Thumbnail</string>
 </resources>
