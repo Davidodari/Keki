@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--Detail Toolbar Has Pastry Name and Serving Quantity-->
     <LinearLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
@@ -15,17 +16,19 @@
         <include layout="@layout/detail_toolbar" />
     </LinearLayout>
 
+    <!--Ingredients Title-->
     <TextView
         android:id="@+id/tv_label_ingredients"
         style="@style/TextViewStyle"
         android:layout_gravity="center"
         android:layout_margin="@dimen/margin_default"
         android:text="@string/label_ingredients"
-        android:textSize="20sp"
+        android:textSize="@dimen/title_text_size"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/frame" />
+
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -39,6 +42,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!--List Of Ingredients in NestedScrollView-->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_ingredients"
                 android:layout_width="match_parent"
@@ -49,15 +53,16 @@
                 android:scrollbars="none"
                 tools:listitem="@layout/ingredient_list_item" />
 
-
+            <!--Title Over Button -->
             <TextView
                 style="@style/TextViewStyle"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_default"
                 android:text="@string/label_steps_section"
-                android:textSize="20sp"
+                android:textSize="@dimen/title_text_size"
                 android:textStyle="normal" />
 
+            <!--Launches Steps Activity-->
             <Button
                 android:id="@+id/btn_view_steps"
                 android:layout_width="wrap_content"
@@ -67,9 +72,8 @@
                 android:background="@drawable/btn_view_steps_background"
                 android:elevation="@dimen/translation_elevation"
                 android:fontFamily="@font/raleway"
-                android:onClick="openStepsIntent"
                 android:padding="@dimen/padding_medium"
-                android:text="@string/label_button_view_steps"
+                android:text="@string/label_view_steps"
                 android:translationZ="@dimen/translation_elevation" />
 
         </LinearLayout>
