@@ -3,14 +3,11 @@ package ke.co.keki.com.keki.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 
 import org.parceler.Parcels;
@@ -25,7 +22,11 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 import ke.co.keki.com.keki.model.pojo.Steps;
 import ke.co.keki.com.keki.presenter.PastryDetailsPresenter;
 import ke.co.keki.com.keki.utils.PastryConstants;
+import ke.co.keki.com.keki.view.steps.StepsActivity;
 
+/**
+ * Activity That Displays Ingredients List
+ */
 public class DetailActivity extends AppCompatActivity implements PastryDetailsContract.View {
 
     @BindView(R.id.rv_ingredients)
@@ -35,7 +36,7 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
     PastryDetailsPresenter pastryDetailsPresenter;
     GridLayoutManager gridLayoutManager;
     IngredientsAdapter ingredientsAdapter;
-
+    public static List<Steps> steps;
 
 
     @Override
@@ -77,19 +78,22 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         ingredientsRecyclerView.setAdapter(ingredientsAdapter);
         final List<Steps> mPastry = pastry.getStepsList();
         btnViewSteps.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        pastryDetailsPresenter.onClicked(mPastry);
-                    }
-                }
+                v -> pastryDetailsPresenter.onClicked(mPastry)
         );
     }
 
+    /**
+     * @param stepsList steps list to be opened in new activity with fragments
+     */
     @Override
     public void openStepView(List<Steps> stepsList) {
+        //intent to steps activity
         Intent intent = new Intent(DetailActivity.this, StepsActivity.class);
-        intent.putExtra("STEPS_LIST", Parcels.wrap(stepsList));
+        //put steps list as extra to steps activity
+        intent.putExtra(PastryConstants.STEPS_LIST, Parcels.wrap(stepsList));
+        //Fragment Arguments
+        steps = stepsList;
+        //start Steps Activity
         startActivity(intent);
     }
 

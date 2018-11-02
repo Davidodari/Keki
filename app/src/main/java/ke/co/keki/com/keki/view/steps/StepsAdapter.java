@@ -1,4 +1,4 @@
-package ke.co.keki.com.keki.view;
+package ke.co.keki.com.keki.view.steps;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -25,8 +25,9 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
     private static IStepsClickHandler iStepsClickHandler;
 
     //Adapter takes in presenter to handle data operations
-    StepsAdapter(List<Steps> stepsList) {
+    StepsAdapter(List<Steps> stepsList,IStepsClickHandler iStepsClickHandler) {
         this.stepsList = stepsList;
+        StepsAdapter.iStepsClickHandler = iStepsClickHandler;
     }
 
     @NonNull
@@ -51,8 +52,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
     }
 
 
-    class StepsViewHolder extends RecyclerView.ViewHolder /**implements View.OnClickListener **/
-    {
+    class StepsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //Bind Views
         @BindView(R.id.iv_thumbnail)
@@ -65,7 +65,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
         StepsViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            // itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         void bind(Steps steps) {
@@ -81,10 +81,10 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
 
         }
 
-//        @Override
-//        public void onClick(View v) {
-//            iStepsClickHandler.onStepClicked(stepsList.get(getAdapterPosition()), v);
-//        }
+        @Override
+        public void onClick(View v) {
+            iStepsClickHandler.onStepClicked(stepsList.get(getAdapterPosition()), v);
+        }
     }
 
     interface IStepsClickHandler {
