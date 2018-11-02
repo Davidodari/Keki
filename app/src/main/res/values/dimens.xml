@@ -63,4 +63,16 @@
 
     <!--Network Error Text -->
     <dimen name="network_connection_error">15sp</dimen>
+
+    <!--Video Fragment Size-->
+    <dimen name="fragment_height">200dp</dimen>
+
+    <!--Steps List Fragment Width-->
+    <dimen name="fragment_width">match_parent</dimen>
+
+    <!--Detail Activity Titles-->
+    <dimen name="title_text_size">20sp</dimen>
+
+    <!--Video Activity-->
+    <dimen name="video_description_text_size">18sp</dimen>
 </resources>

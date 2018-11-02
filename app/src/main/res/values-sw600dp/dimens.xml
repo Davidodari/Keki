@@ -2,4 +2,7 @@
 <resources>
     <dimen name="margin_normal">48dp</dimen>
     <dimen name="margin_large">72dp</dimen>
+    <dimen name="fragment_width">300dp</dimen>
+    <dimen name="fragment_height">300dp</dimen>
+    <dimen name="video_description_text_size">20sp</dimen>
 </resources>
