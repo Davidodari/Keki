@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    tools:context=".view.steps.StepsActivity">
+    <!--
+    This layout is a two-pane layout for the master/detail flow.
+    -->
+    <!--Fragment View-->
+    <fragment
+        android:id="@+id/frag_steps_container"
+        android:name="ke.co.keki.com.keki.view.steps.StepsFragment"
+        android:layout_width="@dimen/fragment_width"
+        android:layout_height="match_parent" />
+
+    <!-- A small divider -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray" />
+    <!--Video View-->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/video_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frag_player_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fragment_height"
+                android:background="@color/colorBlack" />
+
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_normal"
+                android:fontFamily="@font/raleway"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat"
+                android:textSize="@dimen/video_description_text_size"
+                tools:text="1.Desciption" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
