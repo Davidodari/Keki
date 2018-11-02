@@ -6,6 +6,10 @@ import android.util.DisplayMetrics;
 public abstract class PastryConstants {
     public static String PASTRY = "pastry";
     public static String PASTRY_LIST = "pastry_list";
+    public static String STEPS_LIST = "steps_list";
+    public static String STEPS_OBJECT = "steps_object";
+    public static String STEPS_ID = "steps id";
+
     /**
      * @param context Recycler view instance
      * @return number of columns for span count
