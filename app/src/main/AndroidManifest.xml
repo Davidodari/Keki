@@ -26,7 +26,12 @@
         <activity
             android:name=".view.DetailActivity"
             android:parentActivityName=".view.MainActivity" />
-        <activity android:name=".view.StepsActivity"/>
+        <activity android:name=".view.steps.StepsActivity" />
+        <activity
+            android:name=".view.VideoStepsActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:parentActivityName=".view.steps.StepsActivity" />
+
     </application>
 
 </manifest>
