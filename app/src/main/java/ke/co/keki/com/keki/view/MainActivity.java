@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,9 +29,10 @@ import ke.co.keki.com.keki.utils.PastryConstants;
  *
  * @author David Odari
  */
+@SuppressWarnings("WeakerAccess")
 public class MainActivity extends AppCompatActivity implements PastryContract.View, PastryAdapter.IPastryClickHandler {
 
-    PastryPresenter pastryPresenter;
+    private PastryPresenter pastryPresenter;
     @BindView(R.id.rv_pastries)
     RecyclerView mPastryListRecyclerView;
     @BindView(R.id.pb_load)
@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Toolbar toolbar = findViewById(R.id.tb_main_toolbar);
-        setSupportActionBar(toolbar);
         pastryPresenter = new PastryPresenter(this);
         if (pastryPresenter.checkNetworkConnection(this)) {
             pastryPresenter.onStart();
@@ -120,10 +118,9 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
      * Opens Detaill Activity
      *
      * @param pastry pastry item clicked and passed to details activity
-     * @param v      view on which item click is being performed on
      */
     @Override
-    public void onPastryCardClicked(Pastry pastry, View v) {
+    public void onPastryCardClicked(Pastry pastry) {
         Intent openDetailActivity = new Intent(MainActivity.this, DetailActivity.class);
         openDetailActivity.putExtra(PastryConstants.PASTRY, Parcels.wrap(pastry));
         startActivity(openDetailActivity);

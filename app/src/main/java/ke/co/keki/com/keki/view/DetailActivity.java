@@ -29,13 +29,13 @@ import ke.co.keki.com.keki.view.steps.StepsActivity;
  */
 public class DetailActivity extends AppCompatActivity implements PastryDetailsContract.View {
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.rv_ingredients)
     RecyclerView ingredientsRecyclerView;
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.btn_view_steps)
     Button btnViewSteps;
-    PastryDetailsPresenter pastryDetailsPresenter;
-    GridLayoutManager gridLayoutManager;
-    IngredientsAdapter ingredientsAdapter;
+    private PastryDetailsPresenter pastryDetailsPresenter;
     public static List<Steps> steps;
 
 
@@ -70,11 +70,11 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
             getSupportActionBar().setSubtitle(concatServe);
         }
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
-        gridLayoutManager = new GridLayoutManager(getApplicationContext(), PastryConstants.calculateNoOfColumns(this));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), PastryConstants.calculateNoOfColumns(this));
         ingredientsRecyclerView.setHasFixedSize(true);
         ingredientsRecyclerView.setLayoutManager(gridLayoutManager);
         ingredientsRecyclerView.addItemDecoration(itemDecoration);
-        ingredientsAdapter = new IngredientsAdapter(pastry.getIngredientsList());
+        IngredientsAdapter ingredientsAdapter = new IngredientsAdapter(pastry.getIngredientsList());
         ingredientsRecyclerView.setAdapter(ingredientsAdapter);
         final List<Steps> mPastry = pastry.getStepsList();
         btnViewSteps.setOnClickListener(
