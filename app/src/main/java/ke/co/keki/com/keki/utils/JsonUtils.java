@@ -1,7 +1,5 @@
 package ke.co.keki.com.keki.utils;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +19,7 @@ import ke.co.keki.com.keki.model.pojo.Steps;
  */
 public class JsonUtils {
 
-    private static final String TAG = JsonUtils.class.getSimpleName();
+
     //JSON KEYS
     private final static String PASTRY_ID = "id";
     private final static String PASTRY_NAME = "name";
@@ -106,7 +104,8 @@ public class JsonUtils {
                 pastryObject.setName(pastryName);
                 pastryObject.setServings(pastryServings);
                 pastryObject.setImage(pastryImage);
-                pastriesList.add(i,pastryObject);
+                //Add Each Pastry Object to the list
+                pastriesList.add(i, pastryObject);
 
             }
 

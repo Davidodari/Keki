@@ -4,11 +4,15 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 public abstract class PastryConstants {
-    public static String PASTRY = "pastry";
-    public static String PASTRY_LIST = "pastry_list";
-    public static String STEPS_LIST = "steps_list";
-    public static String STEPS_OBJECT = "steps_object";
-    public static String STEPS_ID = "steps id";
+    //Constant Key Names Used to Pass Data betweem Activities and Fragments
+    public static final String PASTRY = "pastry";
+    public static final String PASTRY_LIST = "pastry_list";
+    public static final String STEPS_LIST = "steps_list";
+    public static final String STEPS_OBJECT = "steps_object";
+    public static final String STEPS_ID = "steps id";
+    public static final String VIDEO_URL = "video_link";
+    public static final String CURRENT_STEP = "current_step";
+    public static final String STEP_DESCRIPTION = "step_description";
 
     /**
      * @param context Recycler view instance
