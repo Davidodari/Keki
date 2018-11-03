@@ -25,12 +25,10 @@ import ke.co.keki.com.keki.view.DetailActivity;
 
 public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickHandler {
 
-    String TAG = StepsFragment.class.getSimpleName();
+    private final String TAG = StepsFragment.class.getSimpleName();
     private List<Steps> stepsList;
     @BindView(R.id.rv_steps)
     RecyclerView stepsRecyclerView;
-    GridLayoutManager gridLayoutManager;
-    StepsAdapter stepsAdapter;
     OnStepClickedListener callback;
 
     //will call method in host activity when a step is selected
@@ -46,7 +44,6 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
             callback = (OnStepClickedListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + "must implement OnStepClickedListener");
-
         }
     }
 
@@ -64,12 +61,13 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
             Log.d(TAG, "hasSavedInstance");
             stepsList = Parcels.unwrap(savedInstanceState.getParcelable(PastryConstants.PASTRY_LIST));
         }
-        gridLayoutManager = new GridLayoutManager(inflater.getContext(), PastryConstants.calculateNoOfColumns(inflater.getContext()));
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(inflater.getContext(), PastryConstants.calculateNoOfColumns(inflater.getContext()));
         stepsRecyclerView.setHasFixedSize(true);
         stepsRecyclerView.setLayoutManager(gridLayoutManager);
         if (stepsList != null) {
             Log.d(TAG, "" + stepsList.size());
-            stepsAdapter = new StepsAdapter(stepsList, this);
+            StepsAdapter stepsAdapter = new StepsAdapter(stepsList, this);
             stepsRecyclerView.setAdapter(stepsAdapter);
         } else {
             Log.d(TAG, "Null List");
@@ -79,8 +77,8 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
 
     //On clicked passed id of step that was clicked
     @Override
-    public void onStepClicked(Steps steps, View v) {
-        callback.onStepSelected(steps,steps.getId());
+    public void onStepClicked(Steps steps) {
+        callback.onStepSelected(steps, steps.getId());
     }
 
     @Override
