@@ -1,6 +1,6 @@
 package ke.co.keki.com.keki.model.pojo;
 
-public interface ISteps {
+interface ISteps {
     int getId();
 
     void setId(int id);

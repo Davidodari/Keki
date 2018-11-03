@@ -1,6 +1,6 @@
 package ke.co.keki.com.keki.model.pojo;
 
-public interface IIngredients {
+interface IIngredients {
     int getQuantity();
 
     void setQuantity(int quantity);

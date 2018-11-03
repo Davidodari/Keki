@@ -2,7 +2,7 @@ package ke.co.keki.com.keki.model.pojo;
 
 import java.util.List;
 
-public interface IPastry {
+interface IPastry {
     int getId();
 
     void setId(int id);
