@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import org.parceler.Parcels;
 
@@ -19,11 +16,11 @@ import ke.co.keki.com.keki.utils.PastryConstants;
 
 public class VideoStepsActivity extends AppCompatActivity {
 
-    @BindView(R.id.tv_description)
-    TextView textViewDescription;
+    //Frame Layout Holding Player and Description Views
     @BindView(R.id.frag_player_container)
     FrameLayout playerContainer;
-    FragmentManager fragmentManager = getSupportFragmentManager();
+    //Fragment Manager Carrying Out Fragment Transactions
+    private final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,35 +28,34 @@ public class VideoStepsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_steps);
         ButterKnife.bind(this);
         Intent intent = getIntent();
+        //Check If Intent has Extras
         if (intent.getExtras() != null) {
+            //If intent has a step object retrieve its contents
             if (intent.hasExtra(PastryConstants.STEPS_OBJECT)) {
-                Steps step = Parcels.unwrap(intent.getParcelableExtra(PastryConstants.STEPS_OBJECT));
-                Log.d("VideoStepsActivity", "stepDesc:" + step.getDescription());
-                String desc = step.getDescription();
-                String videoUrl = step.getVideoUrl();
-                VideoFragment videoFragment = new VideoFragment();
-                if (videoUrl.equals("") || step.getVideoUrl() == null) {
-                    playerContainer.setVisibility(View.GONE);
-                } else {
-                    videoFragment.setVideoUrl(videoUrl);
+                if (savedInstanceState == null) {
+                    //If theres no instance of fragment recreate it
+                    Steps step = Parcels.unwrap(intent.getParcelableExtra(PastryConstants.STEPS_OBJECT));
+                    String desc = step.getDescription();
+                    String videoUrl = step.getVideoUrl();
+                    VideoFragment videoFragment = new VideoFragment();
+                    videoFragment.setDescription(desc);
                     videoFragment.setCurrentSteps(step);
+                    //If video url is null set it to null otherwise set link
+                    if (videoUrl.equals("") || step.getVideoUrl() == null) {
+                        videoFragment.setVideoUrl(null);
+                    } else {
+                        videoFragment.setVideoUrl(videoUrl);
+                    }
+                    //Add Fragment To Activity
                     fragmentManager
                             .beginTransaction()
                             .add(R.id.frag_player_container, videoFragment)
                             .commit();
-                }
-                if (textViewDescription != null) {
-                    textViewDescription.setText(desc);
+
+
                 }
             }
         }
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
     }
 
 

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
@@ -41,6 +42,7 @@ import butterknife.ButterKnife;
 import ke.co.keki.com.keki.R;
 import ke.co.keki.com.keki.model.pojo.Steps;
 import ke.co.keki.com.keki.utils.NotificationChannelSupport;
+import ke.co.keki.com.keki.utils.PastryConstants;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -55,6 +57,8 @@ public class VideoFragment extends Fragment {
     FrameLayout playerContainer;
     @BindView(R.id.video_player_view)
     PlayerView mPlayerView;
+    @BindView(R.id.tv_description)
+    TextView descriptionTextView;
     private static final String TAG = VideoStepsActivity.class.getSimpleName();
     private SimpleExoPlayer player;
     private Boolean playWhenReady = true;
@@ -66,10 +70,15 @@ public class VideoFragment extends Fragment {
     private static final String NOTIFICATION_CHANNEL_ID = "music_notification";
     private NotificationManager notificationManager;
     private String videoLink;
+    private String description;
     private Steps currentSteps;
 
     public VideoFragment() {
 
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setVideoUrl(String videoUrl) {
@@ -80,15 +89,35 @@ public class VideoFragment extends Fragment {
         this.currentSteps = currentSteps;
     }
 
+    public String getVideoLink() {
+        return videoLink;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Steps getCurrentSteps() {
+        return currentSteps;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_player, container, false);
         ButterKnife.bind(this, view);
+        //If Saved instance state has asomething in it
         if (savedInstanceState != null) {
-            videoLink = savedInstanceState.getString("VIDEO_URL");
-            currentSteps = Parcels.unwrap(savedInstanceState.getParcelable("CURRENT_STEPS"));
+            videoLink = savedInstanceState.getString(PastryConstants.VIDEO_URL);
+            currentSteps = Parcels.unwrap(savedInstanceState.getParcelable(PastryConstants.CURRENT_STEP));
+            description = savedInstanceState.getString(PastryConstants.STEP_DESCRIPTION);
         }
+        if (getVideoLink() == null) {
+            //If it has no link Make Player Disappear
+            playerContainer.setVisibility(View.GONE);
+        }
+        //Set Step Description
+        descriptionTextView.setText(getDescription());
         componentListener = new VideoFragment.ComponentListener();
         mediaSessionCompat = new MediaSessionCompat(inflater.getContext(), TAG);
         mediaSessionCompat.setFlags(MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS | MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS);
@@ -110,8 +139,10 @@ public class VideoFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("VIDEO_URL", videoLink);
-        outState.putParcelable("CURRENT_STEPS", Parcels.wrap(currentSteps));
+        //Save State On Rotate
+        outState.putString(PastryConstants.VIDEO_URL, getVideoLink());
+        outState.putParcelable(PastryConstants.CURRENT_STEP, Parcels.wrap(getCurrentSteps()));
+        outState.putString(PastryConstants.STEP_DESCRIPTION, getDescription());
     }
 
     private void initializePlayer(String videoLink) {
@@ -140,8 +171,9 @@ public class VideoFragment extends Fragment {
      * @return returns the media source to be played
      */
     private MediaSource buildMediaSource(Uri uri) {
+        final String USER_AGENT = "keki";
         return new ExtractorMediaSource.Factory(
-                new DefaultHttpDataSourceFactory("keki")).
+                new DefaultHttpDataSourceFactory(USER_AGENT)).
                 createMediaSource(uri);
     }
 
@@ -188,8 +220,8 @@ public class VideoFragment extends Fragment {
         mediaSessionCompat.setActive(false);
     }
 
-    public void displayNotification(Steps steps, PlaybackStateCompat state) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), NOTIFICATION_CHANNEL_ID);
+    void displayNotification(Steps steps, PlaybackStateCompat state) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), NOTIFICATION_CHANNEL_ID);
         NotificationChannelSupport notificationChannelSupport = new NotificationChannelSupport();
         notificationChannelSupport.createNotificationChannel(getContext(), NOTIFICATION_CHANNEL_ID);
         int icon;
