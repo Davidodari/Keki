@@ -77,17 +77,15 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
             String id = String.format(Locale.getDefault(), "%d", steps.getId());
             mStepIdTextView.setText(id);
             mStepShortDescTextView.setText(steps.getDescription());
-
-
         }
 
         @Override
         public void onClick(View v) {
-            iStepsClickHandler.onStepClicked(stepsList.get(getAdapterPosition()), v);
+            iStepsClickHandler.onStepClicked(stepsList.get(getAdapterPosition()));
         }
     }
 
     interface IStepsClickHandler {
-        void onStepClicked(Steps steps, View v);
+        void onStepClicked(Steps steps);
     }
 }

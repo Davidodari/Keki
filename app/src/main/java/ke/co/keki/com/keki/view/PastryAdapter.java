@@ -21,10 +21,11 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 
 public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdapterViewHolder> {
 
+    //List of Pastries being displayed on App Launch
     private List<Pastry> mainViewPastryList;
+    //Click Handler handles clicks on The Individual Pastry Cards
     private static IPastryClickHandler iPastryClickHandler;
 
-    //Adapter takes in presenter to handle data operations
     PastryAdapter(List<Pastry> mainViewPastryList, IPastryClickHandler iPastryClickHandlerParams) {
         this.mainViewPastryList = mainViewPastryList;
         iPastryClickHandler = iPastryClickHandlerParams;
@@ -65,11 +66,13 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         PastryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            //Set On CLick Listener
             itemView.setOnClickListener(this);
         }
 
         void bind(Pastry pastry) {
             mPastryTitleTextView.setText(pastry.getName());
+            //If pastry image is missing assign an image that matches the char
             if (pastry.getImage().equals("")) {
                 if (pastry.getName().startsWith("N")) {
                     mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_n));
@@ -91,11 +94,11 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
 
         @Override
         public void onClick(View v) {
-            iPastryClickHandler.onPastryCardClicked(mainViewPastryList.get(getAdapterPosition()), v);
+            iPastryClickHandler.onPastryCardClicked(mainViewPastryList.get(getAdapterPosition()));
         }
     }
 
     interface IPastryClickHandler {
-        void onPastryCardClicked(Pastry pastry, View v);
+        void onPastryCardClicked(Pastry pastry);
     }
 }

@@ -18,6 +18,7 @@ import ke.co.keki.com.keki.model.pojo.Ingredients;
 
 public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.IngredientsViewHolder> {
 
+    //List Of Ingredients
     private List<Ingredients> mIngredients;
 
     IngredientsAdapter(List<Ingredients> mIngredients) {
