@@ -33,9 +33,9 @@ dependencies {
     ext.parcelerVersion = '1.1.11'
     ext.architectureLibraryVersion = '1.1.1'
     ext.gsonVersion = '2.8.5'
-    ext.firebaseCoreVersion = '16.0.4'
-    ext.firebaseCloudMessagingVersion = '17.3.3'
-    ext.firebaseCrashlyticsVersion = '2.9.5'
+    ext.firebaseCoreVersion = '16.0.5'
+    ext.firebaseCloudMessagingVersion = '17.3.4'
+    ext.firebaseCrashlyticsVersion = '2.9.6'
     ext.exoplayerVersion = '2.9.0'
     ext.constraintLayout = '1.1.3'
 
