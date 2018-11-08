@@ -2,15 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/main_background">
+    android:background="@drawable/main_background"
+    android:orientation="vertical">
 
+    <!--Progress Bar-->
     <include
         layout="@layout/progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_large" />
 
+    <!--Main View Recycler View-->
     <include layout="@layout/recyclerview" />
 
 </LinearLayout>
