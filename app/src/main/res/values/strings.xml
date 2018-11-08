@@ -16,6 +16,7 @@
     <string name="next">Next</string>
     <string name="channel_notification_name">Music Notification Control</string>
 
-    <string name="media_url_mp3">http://storage.googleapis.com/exoplayer-test-media-0/play.mp3</string>
-    <string name="media_url_mp4">https://</string>
+    <string name="pick_a_step">Pick A Step To Begin</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
