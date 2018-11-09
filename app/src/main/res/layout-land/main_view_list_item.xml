@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/root_card_view_height"
+    android:layout_marginStart="@dimen/root_card_view_margin_sides_hor"
+    android:layout_marginTop="@dimen/root_card_view_margin_sides_ver"
+    android:layout_marginEnd="@dimen/root_card_view_margin_sides_hor"
+    android:layout_marginBottom="@dimen/root_card_view_margin_sides_ver"
+    android:clickable="true"
+    android:elevation="@dimen/root_card_view_elevation"
+    android:focusable="true"
+    android:padding="@dimen/root_card_view_padding"
+    app:cardCornerRadius="@dimen/root_card_view_corner_radius">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_pastry_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pastry_image_height"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/mainview_image_content_description"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/pastry_drawable_b" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height_scrim"
+            android:background="@drawable/scrim_gradient" />
+
+        <TextView
+            android:id="@+id/tv_pastry_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/pastry_title_margin"
+            android:layout_marginBottom="@dimen/pastry_title_margin_bottom"
+            android:fontFamily="@font/raleway"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+            android:textColor="@color/colorBlack"
+            tools:text="Sicko Pie" />
+
+        <View
+            android:layout_width="@dimen/view_width"
+            android:layout_height="@dimen/view_height"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/serving_margin_top"
+            android:layout_marginBottom="@dimen/view_margins"
+            android:background="@color/colorPrimaryLight" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="@dimen/pastry_serving_title_margin_start"
+            android:layout_marginBottom="@dimen/pastry_serving_title_margin_bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_servings_title"
+                style="@style/TextViewStyle"
+                android:text="@string/label_servings" />
+
+            <TextView
+                android:id="@+id/tv_no_of_servings"
+                style="@style/TextViewStyle"
+                android:layout_marginStart="@dimen/pastry_serving_title_margin_start"
+                tools:text="5" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</android.support.v7.widget.CardView>

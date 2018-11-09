@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fl_player_container"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/fragment_height"
-    android:background="@color/colorBlack">
-
-
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/video_player_view"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--Exo Player View-->
+    <FrameLayout
+        android:id="@+id/fl_player_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/video_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
 
-
-</FrameLayout>
+    <!--Step Description-->
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin_normal"
+        android:fontFamily="@font/raleway"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:textSize="@dimen/video_description_text_size"
+        tools:text="1.Desciption" />
+</LinearLayout>
