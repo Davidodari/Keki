@@ -12,13 +12,16 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 
 @Dao
 public interface PastryDao {
+
     @Query("SELECT * FROM pastry ORDER BY name")
-    List<Pastry> loadPastires();
+    List<Pastry> loadPastry();
 
     @Insert
-    void insertPastries(Pastry pastry);
+    void insertPastry(Pastry pastry);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updatePastry(Pastry pastry);
 
+    @Query("SELECT * FROM pastry WHERE id = :id")
+    List<Pastry> loadPastryById(int id);
 }
