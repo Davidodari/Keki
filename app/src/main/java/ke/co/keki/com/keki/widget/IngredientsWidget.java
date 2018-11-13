@@ -1,9 +1,12 @@
-package ke.co.keki.com.keki;
+package ke.co.keki.com.keki.widget;
+
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
+
+import ke.co.keki.com.keki.R;
 
 /**
  * Implementation of App Widget functionality.
@@ -13,9 +16,9 @@ public class IngredientsWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.ingredients_widget);
-
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_ingredients_layout);
+        views.setTextViewText(R.id.tv_recipe_name, "Nutella Pie");
+        views.setTextViewText(R.id.tv_ingredients, "500 g pie");
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
