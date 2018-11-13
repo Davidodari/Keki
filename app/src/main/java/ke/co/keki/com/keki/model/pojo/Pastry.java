@@ -51,9 +51,18 @@ public class Pastry implements IPastry {
         this.image = image;
     }
 
+    @Ignore
     public Pastry(int id, String name, int Servings, String image) {
         this.id = id;
         this.name = name;
+        this.Servings = Servings;
+        this.image = image;
+    }
+
+    public Pastry(int id, String name, List<Ingredients> ingredientsList, int Servings, String image) {
+        this.id = id;
+        this.name = name;
+        this.ingredientsList = ingredientsList;
         this.Servings = Servings;
         this.image = image;
     }
