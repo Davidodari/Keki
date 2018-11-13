@@ -6,4 +6,4 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_default"
     android:scrollbars="none"
-    tools:listitem="@layout/steps_view_list_item" />
+    tools:listitem="@layout/steps_list_single_item" />
