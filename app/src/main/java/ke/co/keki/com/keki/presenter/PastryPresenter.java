@@ -9,6 +9,7 @@ import java.util.List;
 import ke.co.keki.com.keki.contract.PastryContract;
 import ke.co.keki.com.keki.model.PastryModel;
 import ke.co.keki.com.keki.model.pojo.Pastry;
+import ke.co.keki.com.keki.view.main.MainActivity;
 
 
 public class PastryPresenter implements PastryContract.Presenter {
@@ -22,7 +23,7 @@ public class PastryPresenter implements PastryContract.Presenter {
     }
 
     /**
-     * Called on {@link ke.co.keki.com.keki.view.MainActivity} on destroy and terminates async task
+     * Called on {@link MainActivity} on destroy and terminates async task
      * if its running
      */
     @Override
@@ -73,7 +74,7 @@ public class PastryPresenter implements PastryContract.Presenter {
     }
 
     /**
-     * on initialise presenter called first on {@link ke.co.keki.com.keki.view.MainActivity} onCreate Method
+     * on initialise presenter called first on {@link MainActivity} onCreate Method
      */
     @Override
     public void onStart() {
