@@ -9,19 +9,24 @@ import org.parceler.Parcel;
 
 import java.util.List;
 
+/**
+ * Pastry Object POJO Class
+ */
 @Entity(tableName = "pastry")
 @Parcel(Parcel.Serialization.BEAN)
 public class Pastry implements IPastry {
 
-    //Pastry Object Pojo
+
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private int id;
 
     @ColumnInfo(name = "name")
     private String name;
 
-    @Ignore
+    @ColumnInfo(name = "ingredients")
     private List<Ingredients> ingredientsList;
+
     @Ignore
     private List<Steps> stepsList;
 
@@ -119,4 +124,5 @@ public class Pastry implements IPastry {
     public void setImage(String image) {
         this.image = image;
     }
+
 }
