@@ -33,7 +33,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
     @NonNull
     @Override
     public StepsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        int layoutId = R.layout.steps_view_list_item;
+        int layoutId = R.layout.steps_list_single_item;
         final boolean shouldAttachToParremtImmediately = false;
         Context context = viewGroup.getContext();
         LayoutInflater pastryInflater = LayoutInflater.from(context);

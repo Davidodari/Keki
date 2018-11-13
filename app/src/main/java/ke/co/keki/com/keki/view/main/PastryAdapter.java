@@ -1,4 +1,4 @@
-package ke.co.keki.com.keki.view;
+package ke.co.keki.com.keki.view.main;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

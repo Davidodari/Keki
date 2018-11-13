@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.main.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,15 +24,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.DetailActivity"
-            android:parentActivityName=".view.MainActivity" />
+            android:name=".view.detail.DetailActivity"
+            android:parentActivityName=".view.main.MainActivity" />
         <activity android:name=".view.steps.StepsActivity" />
         <activity
-            android:name=".view.VideoStepsActivity"
+            android:name=".view.video.VideoStepsActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:parentActivityName=".view.steps.StepsActivity" />
 
-        <receiver android:name=".IngredientsWidget">
+        <receiver android:name=".widget.IngredientsWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

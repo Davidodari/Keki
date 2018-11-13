@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import ke.co.keki.com.keki.R;
 import ke.co.keki.com.keki.model.pojo.Steps;
 import ke.co.keki.com.keki.utils.PastryConstants;
-import ke.co.keki.com.keki.view.DetailActivity;
+import ke.co.keki.com.keki.view.detail.DetailActivity;
 
 public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickHandler {
 
@@ -54,7 +54,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Define View
-        View rootView = inflater.inflate(R.layout.fragment_steps_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_steps_recyclerview, container, false);
         ButterKnife.bind(this, rootView);
         setStepsList(DetailActivity.steps);
         if (savedInstanceState != null) {

@@ -1,4 +1,4 @@
-package ke.co.keki.com.keki.view;
+package ke.co.keki.com.keki.view.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +23,7 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 import ke.co.keki.com.keki.presenter.PastryPresenter;
 import ke.co.keki.com.keki.utils.JsonUtils;
 import ke.co.keki.com.keki.utils.PastryConstants;
+import ke.co.keki.com.keki.view.detail.DetailActivity;
 
 /**
  * MainView Activity Class

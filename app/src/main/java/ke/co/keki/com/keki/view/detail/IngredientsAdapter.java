@@ -1,4 +1,4 @@
-package ke.co.keki.com.keki.view;
+package ke.co.keki.com.keki.view.detail;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -30,7 +30,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     public IngredientsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         Context context = viewGroup.getContext();
         LayoutInflater ingredientInflater = LayoutInflater.from(context);
-        int layoutId = R.layout.ingredient_list_item;
+        int layoutId = R.layout.ingredient_list_single_item;
         View viewIngredients = ingredientInflater.inflate(layoutId, viewGroup, false);
         return new IngredientsViewHolder(viewIngredients);
     }

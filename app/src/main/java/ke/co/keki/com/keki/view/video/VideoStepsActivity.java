@@ -1,4 +1,4 @@
-package ke.co.keki.com.keki.view;
+package ke.co.keki.com.keki.view.video;
 
 import android.content.Intent;
 import android.os.Bundle;

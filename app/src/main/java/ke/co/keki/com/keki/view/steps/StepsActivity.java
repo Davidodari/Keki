@@ -10,8 +10,8 @@ import org.parceler.Parcels;
 import ke.co.keki.com.keki.R;
 import ke.co.keki.com.keki.model.pojo.Steps;
 import ke.co.keki.com.keki.utils.PastryConstants;
-import ke.co.keki.com.keki.view.VideoFragment;
-import ke.co.keki.com.keki.view.VideoStepsActivity;
+import ke.co.keki.com.keki.view.video.VideoFragment;
+import ke.co.keki.com.keki.view.video.VideoStepsActivity;
 
 
 public class StepsActivity extends AppCompatActivity implements StepsFragment.OnStepClickedListener {
