@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialKeyguardLayout="@layout/ingredients_widget"
-    android:initialLayout="@layout/ingredients_widget"
-    android:minWidth="40dp"
+    android:initialLayout="@layout/widget_ingredients_layout"
+    android:minWidth="80dp"
     android:minHeight="40dp"
     android:previewImage="@mipmap/ic_launcher"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="6000000"
-    android:widgetCategory="home_screen"/>
+    android:widgetCategory="home_screen" />
