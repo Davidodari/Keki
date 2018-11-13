@@ -1,6 +1,7 @@
 package ke.co.keki.com.keki.view.main;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -62,6 +63,8 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         TextView mPastryTitleTextView;
         @BindView(R.id.tv_no_of_servings)
         TextView mPastryServingValueTextView;
+        @BindView(R.id.iv_fav_ingredient)
+        ImageView favouriteImageView;
 
         PastryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,19 +74,22 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         }
 
         void bind(Pastry pastry) {
+            favouriteImageView.setOnClickListener(v -> {
+                favouriteImageView.setImageDrawable(getDrawableImage(R.drawable.ic_favorite_fill));
+            });
             mPastryTitleTextView.setText(pastry.getName());
             //If pastry image is missing assign an image that matches the char
             if (pastry.getImage().equals("")) {
                 if (pastry.getName().startsWith("N")) {
-                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_n));
+                    mPastryImageView.setImageDrawable(getDrawableImage(R.drawable.pastry_drawable_n));
                 } else if (pastry.getName().startsWith("B")) {
-                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_b));
+                    mPastryImageView.setImageDrawable(getDrawableImage(R.drawable.pastry_drawable_b));
                 } else if (pastry.getName().startsWith("Y")) {
-                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_y));
+                    mPastryImageView.setImageDrawable(getDrawableImage(R.drawable.pastry_drawable_y));
                 } else if (pastry.getName().startsWith("C")) {
-                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.pastry_drawable_c));
+                    mPastryImageView.setImageDrawable(getDrawableImage(R.drawable.pastry_drawable_c));
                 } else {
-                    mPastryImageView.setImageDrawable(itemView.getContext().getDrawable(R.drawable.donut));
+                    mPastryImageView.setImageDrawable(getDrawableImage(R.drawable.donut));
                 }
             } else {
                 Picasso.get().load(pastry.getImage()).into(mPastryImageView);
@@ -95,6 +101,10 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         @Override
         public void onClick(View v) {
             iPastryClickHandler.onPastryCardClicked(mainViewPastryList.get(getAdapterPosition()));
+        }
+
+        private Drawable getDrawableImage(int resourceId) {
+            return itemView.getContext().getDrawable(resourceId);
         }
     }
 
