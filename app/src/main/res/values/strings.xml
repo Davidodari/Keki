@@ -19,4 +19,7 @@
     <string name="pick_a_step">Pick A Step To Begin</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="content_desc_favcon">Image For Selecting Desired Recipe</string>
+    <string name="no_desired_ingredient">No Desired Ingredient Selected</string>
 </resources>

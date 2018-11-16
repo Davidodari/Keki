@@ -72,15 +72,5 @@
                 tools:text="5" />
 
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/iv_fav_ingredient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/margin_default"
-            android:contentDescription="desired ingredient chekcbox"
-            android:src="@drawable/ic_favorite_empty" />
-
     </FrameLayout>
 </android.support.v7.widget.CardView>

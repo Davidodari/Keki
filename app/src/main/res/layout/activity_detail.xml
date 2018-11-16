@@ -6,16 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--Detail Toolbar Has Pastry Name and Serving Quantity-->
-    <LinearLayout
-        android:id="@+id/frame"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <include layout="@layout/activity_detail_toolbar" />
-    </LinearLayout>
-
     <!--Ingredients Title-->
     <TextView
         android:id="@+id/tv_label_ingredients"
@@ -27,13 +17,24 @@
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_fav_con"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:contentDescription="@string/content_desc_favcon"
+        android:src="@drawable/ic_favorite_empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="48dp"
         android:padding="@dimen/padding_normal"
         app:layout_constraintTop_toBottomOf="@id/tv_label_ingredients">
 
