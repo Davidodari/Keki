@@ -22,4 +22,10 @@
 
     <string name="content_desc_favcon">Image For Selecting Desired Recipe</string>
     <string name="no_desired_ingredient">No Desired Ingredient Selected ,select one from app.</string>
+
+    <!--Widget Switch Text-->
+    <string name="label_off">off</string>
+    <string name="label_on">on</string>
+    <string name="label_fav">Favourite :</string>
+    <string name="label_display">Display on Widget :</string>
 </resources>
