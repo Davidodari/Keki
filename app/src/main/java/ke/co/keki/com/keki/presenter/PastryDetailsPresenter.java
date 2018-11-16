@@ -91,6 +91,7 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
 
     }
 
+    //Removes Preference and Updated Widget to default Values
     @Override
     public void removePreferenceAndUpdateWidget(Context ctx) {
         IngredientSharedPreference.removePreferences(ctx);
@@ -98,7 +99,7 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
     }
 
     private void updateWidget(Context context) {
-        //Update Widget
+        //Update Widget Immediately
         Intent intent = new Intent(context, IngredientsWidget.class);
         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         int[] ids = AppWidgetManager.getInstance(context.getApplicationContext())

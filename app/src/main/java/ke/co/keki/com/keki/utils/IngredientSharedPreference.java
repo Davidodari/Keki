@@ -16,7 +16,7 @@ public class IngredientSharedPreference {
 
     public static List<Ingredients> ingredients;
 
-    public static SharedPreferences.Editor initialisePreference(Context context) {
+    private static SharedPreferences.Editor initialisePreference(Context context) {
         SharedPreferences pref = context.getApplicationContext().getSharedPreferences(PastryConstants.SHARED_PREFERENCE_KEY, 0); // 0 - for private mode
         return pref.edit();
     }
@@ -27,6 +27,7 @@ public class IngredientSharedPreference {
         editor.commit();
     }
 
+    //  Converts List To Json string and stored in preference
     public static <T> void setIngredientListPreference(Context context, List<T> recipeIngredients) {
         SharedPreferences.Editor editor = initialisePreference(context);
         Gson gson = new Gson();
@@ -37,6 +38,7 @@ public class IngredientSharedPreference {
         editor.commit();
     }
 
+    //Get Ingredient List Converted from json string using Gson
     public static List<Ingredients> getIngredientsAsList(Context context) {
         SharedPreferences pref = context.getApplicationContext().getSharedPreferences(PastryConstants.SHARED_PREFERENCE_KEY, 0);
         String serializedObject = pref.getString(PastryConstants.PREFERENCE_RECIPE_INGREDIENTS_KEY, null);
@@ -49,6 +51,7 @@ public class IngredientSharedPreference {
         return ingredients;
     }
 
+    //Remove Preferrences Method called when switch is off
     public static void removePreferences(Context context) {
         SharedPreferences.Editor editor = initialisePreference(context);
         editor.remove(PastryConstants.PREFERENCE_RECIPE_NAME_KEY);

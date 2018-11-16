@@ -13,7 +13,6 @@ public abstract class PastryConstants {
     public static final String VIDEO_URL = "video_link";
     public static final String CURRENT_STEP = "current_step";
     public static final String STEP_DESCRIPTION = "step_description";
-    public static final String INGREDIENTS = "ingredients";
 
     //Shared Preference
     public static final String SHARED_PREFERENCE_KEY = "shared_preferences";

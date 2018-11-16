@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -65,12 +64,10 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         if (savedInstanceState != null && savedInstanceState.containsKey(PastryConstants.PASTRY)) {
             pastryObject = Parcels.unwrap(savedInstanceState.getParcelable(PastryConstants.PASTRY));
             if (pastryObject != null) {
-                Log.d("Pastry Saved :", pastryObject.getName());
                 pastryDetailsPresenter.onStart(pastryObject);
             }
         } else if (intent.getExtras() != null && intent.hasExtra(PastryConstants.PASTRY)) {
             pastryObject = Parcels.unwrap(intent.getParcelableExtra(PastryConstants.PASTRY));
-            Log.d("Pastry Intent :", pastryObject.getName());
             pastryDetailsPresenter.onStart(pastryObject);
         }
     }
