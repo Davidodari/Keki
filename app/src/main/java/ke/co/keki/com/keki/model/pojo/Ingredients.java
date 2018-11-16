@@ -7,6 +7,10 @@ import android.arch.persistence.room.PrimaryKey;
 
 import org.parceler.Parcel;
 
+/**
+ * Ingredients POJO
+ */
+
 @Parcel(Parcel.Serialization.BEAN)
 @Entity(tableName = "ingredients")
 public class Ingredients implements IIngredients {
@@ -74,18 +78,22 @@ public class Ingredients implements IIngredients {
         this.ingredientItem = ingredientItem;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
 
+    @Override
     public int getIngredient_id() {
         return ingredient_id;
     }
 
+    @Override
     public void setIngredient_id(int ingredient_id) {
         this.ingredient_id = ingredient_id;
     }

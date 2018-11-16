@@ -7,6 +7,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import org.parceler.Parcel;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,8 +17,7 @@ import java.util.List;
 @Parcel(Parcel.Serialization.BEAN)
 public class Pastry implements IPastry {
 
-
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "id")
     private int id;
 
@@ -35,6 +35,9 @@ public class Pastry implements IPastry {
 
     @ColumnInfo(name = "image")
     private String image;
+
+    @ColumnInfo(name = "updated_at")
+    private Date updatedAt;
 
     @Ignore
     public Pastry() {
@@ -59,7 +62,8 @@ public class Pastry implements IPastry {
         this.image = image;
     }
 
-    public Pastry(int id, String name, List<Ingredients> ingredientsList, int Servings, String image) {
+    public Pastry(int id, String name, List<Ingredients> ingredientsList, int Servings, String image,Date updatedAt) {
+        this.updatedAt = updatedAt;
         this.id = id;
         this.name = name;
         this.ingredientsList = ingredientsList;
@@ -134,4 +138,11 @@ public class Pastry implements IPastry {
         this.image = image;
     }
 
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
