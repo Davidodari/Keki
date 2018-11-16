@@ -28,4 +28,5 @@ public interface PastryDao {
 
     @Query("SELECT * FROM pastry WHERE id = :id")
     List<Pastry> loadPastryById(int id);
+
 }

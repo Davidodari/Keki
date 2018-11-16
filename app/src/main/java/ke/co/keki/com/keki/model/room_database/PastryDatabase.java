@@ -9,8 +9,8 @@ import android.util.Log;
 
 import ke.co.keki.com.keki.model.pojo.Pastry;
 
-@Database(entities = {Pastry.class}, version = 1, exportSchema = false)
-@TypeConverters({ListConverter.class})
+@Database(entities = {Pastry.class}, version = 3, exportSchema = false)
+@TypeConverters({ListConverter.class, DateConverter.class})
 public abstract class PastryDatabase extends RoomDatabase {
     private static PastryDatabase ipastryDatabase;
     private static final String LOG_TAG = PastryDatabase.class.getSimpleName();
