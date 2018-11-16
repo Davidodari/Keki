@@ -1,6 +1,8 @@
 package ke.co.keki.com.keki.model.pojo;
 
 
+import android.support.annotation.NonNull;
+
 import org.parceler.Parcel;
 
 @Parcel(Parcel.Serialization.BEAN)
@@ -77,6 +79,7 @@ public class Steps implements ISteps {
         this.thumbnailUrl = thumbnailUrl;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Steps{" +

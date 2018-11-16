@@ -14,7 +14,7 @@ import ke.co.keki.com.keki.model.pojo.Ingredients;
 
 public class IngredientSharedPreference {
 
-    public static List<Ingredients> ingredients;
+    private static List<Ingredients> ingredients;
 
     private static SharedPreferences.Editor initialisePreference(Context context) {
         SharedPreferences pref = context.getApplicationContext().getSharedPreferences(PastryConstants.SHARED_PREFERENCE_KEY, 0); // 0 - for private mode

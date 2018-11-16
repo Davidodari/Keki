@@ -9,5 +9,6 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorStroke">#880E4F</color>
     <color name="colorBlack">#4b000000</color>
+    <color name="colorBlackDark">#7CADF1</color>
 
 </resources>

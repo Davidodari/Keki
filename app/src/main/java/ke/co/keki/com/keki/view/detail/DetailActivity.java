@@ -46,7 +46,7 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
     Switch swDisplaySelectedIngredients;
     private PastryDetailsPresenter pastryDetailsPresenter;
     public static List<Steps> steps;
-    public Pastry pastryObject;
+    private Pastry pastryObject;
     static Intent intent;
 
     @Override

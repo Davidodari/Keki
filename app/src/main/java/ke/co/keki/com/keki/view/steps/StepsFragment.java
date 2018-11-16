@@ -29,7 +29,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
     private List<Steps> stepsList;
     @BindView(R.id.rv_steps)
     RecyclerView stepsRecyclerView;
-    OnStepClickedListener callback;
+    private OnStepClickedListener callback;
 
     //will call method in host activity when a step is selected
     public interface OnStepClickedListener {
@@ -85,7 +85,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
     }
 
     //Set The List Of Steps To Display
-    public void setStepsList(List<Steps> stepsList) {
+    private void setStepsList(List<Steps> stepsList) {
         this.stepsList = stepsList;
     }
 

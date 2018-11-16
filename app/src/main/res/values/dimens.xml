@@ -6,7 +6,6 @@
     <dimen name="root_card_view_margin_sides_hor">16dp</dimen>
     <dimen name="root_card_view_margin_sides_ver">8dp</dimen>
     <dimen name="root_card_view_elevation">8dp</dimen>
-    <dimen name="root_card_view_translationz">8dp</dimen>
     <dimen name="root_card_view_corner_radius">8dp</dimen>
     <dimen name="root_card_view_padding">8dp</dimen>
     <!--Landscape-->
@@ -27,7 +26,6 @@
     <dimen name="view_margins">32dp</dimen>
     <!--Text View Serving Value-->
     <dimen name="serving_margin_top">8dp</dimen>
-    <dimen name="serving_margin_bottom">4dp</dimen>
 
     <!--View image scrim height/black overlay over image view-->
     <dimen name="view_height_scrim">200dp</dimen>
@@ -46,11 +44,8 @@
     <dimen name="padding_normal">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
 
-    <!--Constraint guidelines-->
-    <dimen name="guideline_default">16dp</dimen>
 
     <!--View - (Ingredients List Item) Height and Width-->
-    <dimen name="view_lsyout_width_title">32dp</dimen>
     <dimen name="view_layout_height">2dp</dimen>
     <dimen name="view_lsyout_width">16dp</dimen>
 
@@ -66,9 +61,6 @@
     <!--Network Error Text -->
     <dimen name="network_connection_error">15sp</dimen>
 
-    <!--Video Fragment Size-->
-    <dimen name="fragment_height">200dp</dimen>
-
     <!--Steps List Fragment Width-->
     <dimen name="fragment_width">300dp</dimen>
 
@@ -82,7 +74,7 @@
 Refer to App Widget Documentation for margin information
 http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     -->
-    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="widget_margin">0dp</dimen>
 
     <dimen name="step_item_height">160dp</dimen>
     <dimen name="step_image_height">80dp</dimen>

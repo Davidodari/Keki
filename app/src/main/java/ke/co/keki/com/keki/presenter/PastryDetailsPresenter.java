@@ -70,7 +70,7 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
 
     /**
      * @param pastry If it exists in Database display image view with favourite image drawable
-     * @return
+     *
      */
     @Override
     public void checkFromDatabase(Pastry pastry) {

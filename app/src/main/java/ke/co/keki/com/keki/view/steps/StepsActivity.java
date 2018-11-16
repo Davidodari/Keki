@@ -17,7 +17,7 @@ import ke.co.keki.com.keki.view.video.VideoStepsActivity;
 public class StepsActivity extends AppCompatActivity implements StepsFragment.OnStepClickedListener {
 
     private boolean mTwoPane;
-    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

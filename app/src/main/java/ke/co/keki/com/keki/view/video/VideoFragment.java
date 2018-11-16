@@ -220,7 +220,7 @@ public class VideoFragment extends Fragment {
         mediaSessionCompat.setActive(false);
     }
 
-    void displayNotification(Steps steps, PlaybackStateCompat state) {
+    private void displayNotification(Steps steps, PlaybackStateCompat state) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), NOTIFICATION_CHANNEL_ID);
         NotificationChannelSupport notificationChannelSupport = new NotificationChannelSupport();
         notificationChannelSupport.createNotificationChannel(getContext(), NOTIFICATION_CHANNEL_ID);

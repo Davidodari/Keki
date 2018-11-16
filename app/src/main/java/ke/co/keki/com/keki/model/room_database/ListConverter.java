@@ -11,7 +11,7 @@ import java.util.List;
 import ke.co.keki.com.keki.model.pojo.Ingredients;
 
 
-public class ListConverter {
+class ListConverter {
     @TypeConverter
     public static List<Ingredients> fromString(String value) {
         Type listType = new TypeToken<List<Ingredients>>() {

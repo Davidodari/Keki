@@ -20,7 +20,7 @@ import ke.co.keki.com.keki.utils.PastryConstants;
 public class IngredientsWidget extends AppWidgetProvider {
 
     //List Of Ingredients
-    public static String listOfIngredients;
+    private static String listOfIngredients;
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
         SharedPreferences pref = context.getApplicationContext().getSharedPreferences(PastryConstants.SHARED_PREFERENCE_KEY, 0);

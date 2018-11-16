@@ -3,8 +3,8 @@
     android:id="@+id/widget_view_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     android:orientation="vertical"
+    android:background="@color/colorWhite"
     android:padding="@dimen/widget_margin">
 
     <TextView
