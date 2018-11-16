@@ -1,5 +1,6 @@
 package ke.co.keki.com.keki.contract;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
@@ -7,7 +8,6 @@ import java.util.List;
 
 import ke.co.keki.com.keki.model.pojo.Pastry;
 import ke.co.keki.com.keki.model.pojo.Steps;
-import ke.co.keki.com.keki.model.room_database.PastryDatabase;
 
 public interface PastryDetailsContract {
 
@@ -16,9 +16,9 @@ public interface PastryDetailsContract {
 
         void openStepView(List<Steps> stepsList);
 
-        void displayOnAddToast();
+        void onAddedToDatabase();
 
-        void displayOnRemoveToast();
+        void onRemovedFromDatabase();
     }
 
     interface Presenter {
@@ -27,9 +27,9 @@ public interface PastryDetailsContract {
 
         void onClicked(List<Steps> stepsList);
 
-        void databaseOperations(Pastry pastry);
+        void databaseOperations(Context ctx, Pastry pastry);
 
-        boolean checkFromDatabase(Pastry pastry);
+        void checkFromDatabase(Pastry pastry);
 
     }
 }

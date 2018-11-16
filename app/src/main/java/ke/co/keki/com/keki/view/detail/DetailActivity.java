@@ -8,10 +8,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.parceler.Parcels;
 
@@ -50,13 +48,7 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-        Toolbar mToolbar = findViewById(R.id.tb_detail_toolbar);
-        setSupportActionBar(mToolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        pastryDatabase = PastryDatabase.getInstance(this);
+        pastryDatabase = PastryDatabase.getInstance(getApplicationContext());
         Intent intent = getIntent();
         pastryDetailsPresenter = new PastryDetailsPresenter(this, pastryDatabase);
         if (intent != null) {
@@ -87,7 +79,11 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         btnViewSteps.setOnClickListener(
                 v -> pastryDetailsPresenter.onClicked(mPastry)
         );
-        favConimageView.setOnClickListener(v -> pastryDetailsPresenter.databaseOperations(pastry));
+        //Room Database Operations
+        //Check if its in database and display Drawable showing it exists
+        pastryDetailsPresenter.checkFromDatabase(pastry);
+        //Add or Remove From Database
+        favConimageView.setOnClickListener(v -> pastryDetailsPresenter.databaseOperations(this, pastry));
     }
 
     /**
@@ -105,27 +101,15 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         startActivity(intent);
     }
 
+    //Change Icon When Added or Removed From Database
     @Override
-    public void displayOnAddToast() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(DetailActivity.this, "Added To favourite Recipe", Toast.LENGTH_SHORT).show();
-                favConimageView.setImageDrawable(getDrawable(R.drawable.ic_favorite_fill));
-            }
-        });
-
+    public void onAddedToDatabase() {
+        runOnUiThread(() -> favConimageView.setImageDrawable(getDrawable(R.drawable.ic_favorite_fill)));
     }
 
     @Override
-    public void displayOnRemoveToast() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(DetailActivity.this, "Removed From Favourite Recipe", Toast.LENGTH_SHORT).show();
-                favConimageView.setImageDrawable(getDrawable(R.drawable.ic_favorite_empty));
-            }
-        });
+    public void onRemovedFromDatabase() {
+        runOnUiThread(() -> favConimageView.setImageDrawable(getDrawable(R.drawable.ic_favorite_empty)));
     }
 
 }
