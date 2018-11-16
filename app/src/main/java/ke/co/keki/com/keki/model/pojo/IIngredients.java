@@ -13,11 +13,4 @@ interface IIngredients {
 
     void setIngredientItem(String ingredientItem);
 
-    void setId(int id);
-
-    void setIngredient_id(int ingredient_id);
-
-    int getIngredient_id();
-
-    int getId();
 }
