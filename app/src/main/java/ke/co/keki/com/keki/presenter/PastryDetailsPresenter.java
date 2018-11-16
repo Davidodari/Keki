@@ -4,10 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.util.Log;
-
-import org.parceler.Parcels;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -20,7 +17,6 @@ import ke.co.keki.com.keki.model.pojo.Steps;
 import ke.co.keki.com.keki.model.room_database.AppExecutors;
 import ke.co.keki.com.keki.model.room_database.PastryDatabase;
 import ke.co.keki.com.keki.utils.IngredientSharedPreference;
-import ke.co.keki.com.keki.utils.PastryConstants;
 import ke.co.keki.com.keki.widget.IngredientsWidget;
 
 public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
@@ -35,13 +31,10 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
 
     //On Start Of Details Activity bind views
     @Override
-    public void onStart(@NonNull Intent intent) {
-        if (intent.hasExtra(PastryConstants.PASTRY)) {
-            Pastry pastry = Parcels.unwrap(intent.getParcelableExtra(PastryConstants.PASTRY));
+    public void onStart(Pastry pastry) {
             if (pastry != null) {
                 view.bindViews(pastry);
             }
-        }
     }
 
     //Opens Steps Intent

@@ -1,7 +1,6 @@
 package ke.co.keki.com.keki.contract;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public interface PastryDetailsContract {
 
     interface Presenter {
 
-        void onStart(@NonNull Intent intent);
+        void onStart(Pastry pastry);
 
         void onClicked(List<Steps> stepsList);
 
