@@ -39,6 +39,9 @@ public class StepsActivity extends AppCompatActivity implements StepsFragment.On
                         .commit();
             }
         }
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.label_steps_section));
+        }
     }
 
     @Override
@@ -51,6 +54,7 @@ public class StepsActivity extends AppCompatActivity implements StepsFragment.On
         if (!mTwoPane) {
             //Start Activity if its phone layout
             startActivity(intent);
+
         } else {
             //If its tab layout
             String desc = steps.getDescription();
