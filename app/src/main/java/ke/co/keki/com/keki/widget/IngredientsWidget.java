@@ -4,7 +4,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -49,7 +48,6 @@ public class IngredientsWidget extends AppWidgetProvider {
                     //Append Each Ingredient
                     stringBuilder.append(ingredientItem);
                 }
-                Log.d("Ingredients List Final", stringBuilder.toString());
                 listOfIngredients = stringBuilder.toString();
                 views.setTextViewText(R.id.tv_recipe_name_widget, recipeNameFromPreference);
                 views.setTextViewText(R.id.tv_ingredients_widget, listOfIngredients);
