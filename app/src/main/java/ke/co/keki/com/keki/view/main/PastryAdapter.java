@@ -63,8 +63,6 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         TextView mPastryTitleTextView;
         @BindView(R.id.tv_no_of_servings)
         TextView mPastryServingValueTextView;
-        @BindView(R.id.iv_fav_ingredient)
-        ImageView favouriteImageView;
 
         PastryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,9 +72,7 @@ public class PastryAdapter extends RecyclerView.Adapter<PastryAdapter.PastryAdap
         }
 
         void bind(Pastry pastry) {
-            favouriteImageView.setOnClickListener(v -> {
-                favouriteImageView.setImageDrawable(getDrawableImage(R.drawable.ic_favorite_fill));
-            });
+
             mPastryTitleTextView.setText(pastry.getName());
             //If pastry image is missing assign an image that matches the char
             if (pastry.getImage().equals("")) {
