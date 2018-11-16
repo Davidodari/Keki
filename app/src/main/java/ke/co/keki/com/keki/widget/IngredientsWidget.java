@@ -44,9 +44,8 @@ public class IngredientsWidget extends AppWidgetProvider {
                     String ingredient = ingredients.get(i).getIngredientItem();
                     String measure = ingredients.get(i).getMeasure();
                     String quantity = String.valueOf(ingredients.get(i).getQuantity());
-
                     //Build An Ingredient Item
-                    String ingredientItem = ingredient.concat(" " + quantity).concat(" " + measure).concat("\n");
+                    String ingredientItem = String.valueOf(i + 1).concat(". " + ingredient.concat("  " + quantity).concat("  " + measure).concat("\n"));
                     //Append Each Ingredient
                     stringBuilder.append(ingredientItem);
                 }
