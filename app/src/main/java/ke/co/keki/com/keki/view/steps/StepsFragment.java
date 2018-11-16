@@ -36,7 +36,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
         void onStepSelected(Steps steps, int stepId);
     }
 
-    //checks that hst has implemented the callback
+    //checks that host has implemented the callback
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -58,15 +58,12 @@ public class StepsFragment extends Fragment implements StepsAdapter.IStepsClickH
         ButterKnife.bind(this, rootView);
         setStepsList(DetailActivity.steps);
         if (savedInstanceState != null) {
-            Log.d(TAG, "hasSavedInstance");
             stepsList = Parcels.unwrap(savedInstanceState.getParcelable(PastryConstants.PASTRY_LIST));
         }
-
         GridLayoutManager gridLayoutManager = new GridLayoutManager(inflater.getContext(), PastryConstants.calculateNoOfColumns(inflater.getContext()));
         stepsRecyclerView.setHasFixedSize(true);
         stepsRecyclerView.setLayoutManager(gridLayoutManager);
         if (stepsList != null) {
-            Log.d(TAG, "" + stepsList.size());
             StepsAdapter stepsAdapter = new StepsAdapter(stepsList, this);
             stepsRecyclerView.setAdapter(stepsAdapter);
         } else {
