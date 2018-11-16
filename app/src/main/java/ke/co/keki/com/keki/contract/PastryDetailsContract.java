@@ -31,5 +31,9 @@ public interface PastryDetailsContract {
 
         void checkFromDatabase(Pastry pastry);
 
+        void addPreferenceAndUpdateWidget(Context ctx, Pastry pastry);
+
+        void removePreferenceAndUpdateWidget(Context ctx);
+
     }
 }

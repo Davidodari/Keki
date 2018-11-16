@@ -1,5 +1,7 @@
 package ke.co.keki.com.keki.presenter;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -17,13 +19,13 @@ import ke.co.keki.com.keki.model.pojo.Pastry;
 import ke.co.keki.com.keki.model.pojo.Steps;
 import ke.co.keki.com.keki.model.room_database.AppExecutors;
 import ke.co.keki.com.keki.model.room_database.PastryDatabase;
+import ke.co.keki.com.keki.utils.IngredientSharedPreference;
 import ke.co.keki.com.keki.utils.PastryConstants;
-import ke.co.keki.com.keki.widget.IngredientUpdateService;
+import ke.co.keki.com.keki.widget.IngredientsWidget;
 
 public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
 
     private PastryDetailsContract.View view;
-    private boolean isAddedToDatabase;
     private PastryDatabase pastryDatabase;
 
     public PastryDetailsPresenter(PastryDetailsContract.View view, PastryDatabase pastryDatabase) {
@@ -63,7 +65,7 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
                 Pastry newPastryObject = new Pastry(pastry.getId(), pastry.getName(), pastry.getIngredientsList(), pastry.getServings(), pastry.getImage(), dateToday);
                 //Add To Database and set imageview
                 pastryDatabase.pastryDao().insertPastry(newPastryObject);
-                IngredientUpdateService.updateIngredient(context,pastry.getId());
+                //Set Drawable
                 view.onAddedToDatabase();
             } else {
                 //Remove from Database and set imageview
@@ -85,5 +87,30 @@ public class PastryDetailsPresenter implements PastryDetailsContract.Presenter {
                 view.onAddedToDatabase();
             }
         });
+    }
+
+    @Override
+    public void addPreferenceAndUpdateWidget(Context context, Pastry pastry) {
+        //Add To Shared Preference
+        IngredientSharedPreference.setIngredientListPreference(context, pastry.getIngredientsList());
+        IngredientSharedPreference.setRecipeNamePreference(pastry.getName(), context);
+        updateWidget(context);
+
+    }
+
+    @Override
+    public void removePreferenceAndUpdateWidget(Context ctx) {
+        IngredientSharedPreference.removePreferences(ctx);
+        updateWidget(ctx);
+    }
+
+    private void updateWidget(Context context) {
+        //Update Widget
+        Intent intent = new Intent(context, IngredientsWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        int[] ids = AppWidgetManager.getInstance(context.getApplicationContext())
+                .getAppWidgetIds(new ComponentName(context.getApplicationContext(), IngredientsWidget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        context.sendBroadcast(intent);
     }
 }
