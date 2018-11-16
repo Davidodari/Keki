@@ -10,9 +10,17 @@ After creation copy Google Services Json file to app module folder for successfu
 
 ## Screenshots
 
-| [![Screen1](https://github.com/Davidodari/Keki_App/blob/master/Main%20Screen.png)]() | [![Screen2](https://github.com/Davidodari/Keki_App/blob/master/Details%20Screen.png)]() |
-|:---:|:---:|
-| Main Screen | Details Screen |
+#### Phone Screen
+
+| [![Screen1](https://github.com/Davidodari/Keki_App/blob/master/screenshots/phone_main.png)]() | [![Screen2](https://github.com/Davidodari/Keki_App/blob/master/screenshots/phone_detail.png)]() |[![Screen2](https://github.com/Davidodari/Keki_App/blob/master/screenshots/phone_steps.png)]() |[![Screen2](https://github.com/Davidodari/Keki_App/blob/master/screenshots/phone_view_steps.png)]() |
+|:---:|:---:|:---:|:---:|
+| Main Screen | Details Screen | Steps Screen | Video Screen |
+
+#### Tab Screen
+
+| [![Screen1](https://github.com/Davidodari/Keki_App/blob/master/screenshots/tab_main.png)]() | [![Screen2](https://github.com/Davidodari/Keki_App/blob/master/screenshots/tab_detail.png)]() |[![Screen2](https://github.com/Davidodari/Keki_App/blob/master/screenshots/tab_steps.png)]() |
+|:---:|:---:|:---:|
+| Main Screen | Details Screen | Steps Screen | 
 
 ## Tools Used
 
