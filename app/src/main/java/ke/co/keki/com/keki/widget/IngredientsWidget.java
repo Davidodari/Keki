@@ -25,16 +25,19 @@ public class IngredientsWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
         SharedPreferences pref = context.getApplicationContext().getSharedPreferences(PastryConstants.SHARED_PREFERENCE_KEY, 0);
-        String recipeIngredientFromPreference = pref.getString(PastryConstants.PREFERENCE_RECIPE_NAME_KEY, context.getResources().getString(R.string.no_desired_ingredient));
+
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_ingredients_layout);
         //String Builder
-        views.setTextViewText(R.id.tv_recipe_name_widget, context.getResources().getString(R.string.app_name));
-        views.setTextViewText(R.id.tv_ingredients_widget, recipeIngredientFromPreference);
+        if (!pref.contains(PastryConstants.PREFERENCE_RECIPE_INGREDIENTS_KEY)) {
+            views.setTextViewText(R.id.tv_recipe_name_widget, context.getResources().getString(R.string.app_name));
+
+            views.setTextViewText(R.id.tv_ingredients_widget, context.getResources().getString(R.string.no_desired_ingredient));
+        }
 
         StringBuilder stringBuilder = new StringBuilder();
         String recipeNameFromPreference = pref.getString(PastryConstants.PREFERENCE_RECIPE_NAME_KEY, context.getResources().getString(R.string.app_name));
-
-        if (recipeNameFromPreference != null && !recipeNameFromPreference.equals("")) {
+        String recipeIngredFromPreference = pref.getString(PastryConstants.PREFERENCE_RECIPE_INGREDIENTS_KEY, context.getResources().getString(R.string.no_desired_ingredient));
+        if (recipeNameFromPreference != null && !recipeNameFromPreference.equals(context.getResources().getString(R.string.app_name)) && recipeIngredFromPreference != null && !recipeIngredFromPreference.equals(context.getResources().getString(R.string.no_desired_ingredient))) {
             List<Ingredients> ingredients = IngredientSharedPreference.getIngredientsAsList(context);
             if (ingredients != null) {
                 for (int i = 0; i < ingredients.size(); i++) {
