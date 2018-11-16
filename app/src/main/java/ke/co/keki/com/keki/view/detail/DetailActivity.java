@@ -13,7 +13,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import org.parceler.Parcels;
 
@@ -48,27 +47,31 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
     Switch swDisplaySelectedIngredients;
     private PastryDetailsPresenter pastryDetailsPresenter;
     public static List<Steps> steps;
-    public Pastry pastry;
-    private PastryDatabase pastryDatabase;
+    public Pastry pastryObject;
+    static Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-        pastryDatabase = PastryDatabase.getInstance(getApplicationContext());
-        Intent intent = getIntent();
+
+        PastryDatabase pastryDatabase = PastryDatabase.getInstance(getApplicationContext());
+
+        intent = getIntent();
+
         pastryDetailsPresenter = new PastryDetailsPresenter(this, pastryDatabase);
-        if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey(PastryConstants.PASTRY)) {
-                Pastry pastry = Parcels.unwrap(savedInstanceState.getParcelable(PastryConstants.PASTRY));
-                if (pastry != null) {
-                    Log.d("Pastry :", pastry.getName());
-                    bindViews(pastry);
-                }
+
+        if (savedInstanceState != null && savedInstanceState.containsKey(PastryConstants.PASTRY)) {
+            pastryObject = Parcels.unwrap(savedInstanceState.getParcelable(PastryConstants.PASTRY));
+            if (pastryObject != null) {
+                Log.d("Pastry Saved :", pastryObject.getName());
+                pastryDetailsPresenter.onStart(pastryObject);
             }
-        } else if (intent != null) {
-            pastryDetailsPresenter.onStart(intent);
+        } else if (intent.getExtras() != null && intent.hasExtra(PastryConstants.PASTRY)) {
+            pastryObject = Parcels.unwrap(intent.getParcelableExtra(PastryConstants.PASTRY));
+            Log.d("Pastry Intent :", pastryObject.getName());
+            pastryDetailsPresenter.onStart(pastryObject);
         }
     }
 
@@ -88,18 +91,16 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
         btnViewSteps.setOnClickListener(
                 v -> pastryDetailsPresenter.onClicked(mPastry)
         );
-        this.pastry = pastry;
+
         //Check Preference and set state of switch button
         checkSharedPreferenceAndSetState(pastry);
         swDisplaySelectedIngredients.setOnClickListener(v -> {
             // check current state of  Switch (true or false).
             Boolean switchState = swDisplaySelectedIngredients.isChecked();
             if (switchState) {
-                Toast.makeText(DetailActivity.this, "Updated Widget", Toast.LENGTH_SHORT).show();
                 pastryDetailsPresenter.addPreferenceAndUpdateWidget(this, pastry);
             } else {
                 pastryDetailsPresenter.removePreferenceAndUpdateWidget(this);
-                Toast.makeText(DetailActivity.this, "Removed From Widget", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -176,7 +177,7 @@ public class DetailActivity extends AppCompatActivity implements PastryDetailsCo
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        outState.putParcelable(PastryConstants.PASTRY, Parcels.wrap(pastry));
         super.onSaveInstanceState(outState, outPersistentState);
+        outState.putParcelable(PastryConstants.PASTRY, Parcels.wrap(intent.getParcelableExtra(PastryConstants.PASTRY)));
     }
 }
