@@ -13,6 +13,14 @@ public abstract class PastryConstants {
     public static final String VIDEO_URL = "video_link";
     public static final String CURRENT_STEP = "current_step";
     public static final String STEP_DESCRIPTION = "step_description";
+    public static final String INGREDIENTS = "ingredients";
+
+    //Shared Preference
+    public static final String SHARED_PREFERENCE_KEY = "shared_preferences";
+    public static final String PREFERENCE_RECIPE_NAME_KEY = "shared_preferences_name";
+    public static final String PREFERENCE_RECIPE_INGREDIENTS_KEY = "shared_preferences_ingredients";
+
+
 
     /**
      * @param context Recycler view instance
