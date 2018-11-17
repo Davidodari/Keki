@@ -61,7 +61,6 @@ public class IngredientsWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
-        Toast.makeText(context, "Widget Updated", Toast.LENGTH_LONG).show();
     }
 
     @Override
