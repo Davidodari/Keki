@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements PastryContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         pastryPresenter = new PastryPresenter(this);
         if (pastryPresenter.checkNetworkConnection(this)) {
             pastryPresenter.onStart();

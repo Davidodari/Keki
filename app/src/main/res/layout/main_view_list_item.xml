@@ -23,15 +23,13 @@
             android:id="@+id/iv_pastry_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/pastry_image_height"
-            android:adjustViewBounds="true"
             android:contentDescription="@string/mainview_image_content_description"
             android:scaleType="centerCrop"
             tools:src="@drawable/pastry_drawable_b" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/view_height_scrim"
-            android:background="@drawable/scrim_gradient" />
+            android:layout_height="@dimen/view_height_scrim" />
 
         <TextView
             android:id="@+id/tv_pastry_title"
@@ -42,7 +40,6 @@
             android:layout_marginBottom="@dimen/pastry_title_margin_bottom"
             android:fontFamily="@font/raleway"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
-            android:textColor="@color/colorBlack"
             tools:text="Sicko Pie" />
 
         <View
